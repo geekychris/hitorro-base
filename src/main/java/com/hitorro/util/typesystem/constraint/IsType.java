@@ -1,0 +1,67 @@
+/*
+ * Copyright (c) 2006 - 2025 Chris Collins
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+
+package com.hitorro.util.typesystem.constraint;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.hitorro.util.core.opers.HTPredicate;
+import com.hitorro.util.typesystem.HTSerializable;
+import com.hitorro.util.typesystem.TypeIntf;
+import com.hitorro.util.typesystem.TypeManager;
+
+/**
+ *
+ */
+public class IsType<T extends HTSerializable> implements HTPredicate<T> {
+	private final TypeManager tm;
+	private final TypeIntf type;
+
+	public IsType(String typeString) {
+		tm = TypeManager.getTypeManager();
+		type = tm.getTypeByShortName(typeString);
+	}
+
+	public IsType(TypeIntf type) {
+		this.type = type;
+
+		tm = TypeManager.getTypeManager();
+	}
+
+	@Override
+	public void initForPass() {
+	}
+
+	@Override
+	public boolean test(final T tin) {
+		TypeIntf t = tm.getTypeForBaseType(tin);
+		if (t == null) {
+			return false;
+		}
+		return type == t;
+	}
+
+	@Override
+	public boolean initFromMap(final JsonNode map) {
+		return true;
+	}
+}
