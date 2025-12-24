@@ -1,12 +1,5 @@
-package com.hitorro.network.rpc.cluster.group;
-
-import com.hitorro.jsontypesystem.JVS;
-
-import java.util.List;
-import java.util.function.Predicate;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,13 @@ import java.util.function.Predicate;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.group;
+
+import com.hitorro.jsontypesystem.JVS;
+
+import java.util.List;
+import java.util.function.Predicate;
+
 public abstract class DefinitionRealmSelector {
 	protected String realm;
 	private Predicate<JVS> definitionConstraint;

@@ -1,12 +1,5 @@
-package com.hitorro.network.rpc.cluster.constraints;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.network.rpc.cluster.IDef;
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,12 @@ import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.constraints;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.network.rpc.cluster.IDef;
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
 
 @TypeClassMetaInfo(shortTypeName = "clustSrvTypeConst",
 		isView = false,

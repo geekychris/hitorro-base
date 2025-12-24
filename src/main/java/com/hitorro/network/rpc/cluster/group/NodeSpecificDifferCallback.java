@@ -1,11 +1,5 @@
-package com.hitorro.network.rpc.cluster.group;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.network.rpc.cluster.ClusterService;
-import com.hitorro.network.rpc.cluster.IDef;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +19,12 @@ import com.hitorro.network.rpc.cluster.IDef;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.group;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.network.rpc.cluster.ClusterService;
+import com.hitorro.network.rpc.cluster.IDef;
+
 public class NodeSpecificDifferCallback implements NodeGroupDifferCallback {
 	private final JVS id;
 	private final String name;

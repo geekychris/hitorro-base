@@ -1,11 +1,5 @@
-package com.hitorro.util.typesystem;
-
-import com.hitorro.language.IsoLanguage;
-import com.hitorro.util.GenericAnalyzerBase;
-import org.apache.lucene.analysis.Analyzer;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +19,12 @@ import org.apache.lucene.analysis.Analyzer;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem;
+
+import com.hitorro.language.IsoLanguage;
+import com.hitorro.util.GenericAnalyzerBase;
+import org.apache.lucene.analysis.Analyzer;
+
 public abstract class HTAnalyzerFactory {
 	private static HTAnalyzerFactory fact;
 

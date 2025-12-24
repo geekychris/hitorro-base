@@ -1,24 +1,5 @@
-package com.hitorro.network.rpc;
-
-import com.hitorro.util.commandandcontrol.CommandRegistry;
-import com.hitorro.util.core.Env;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.core.thread.EnhancedThreadFactory;
-
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +19,25 @@ import java.util.concurrent.TimeUnit;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc;
+
+import com.hitorro.util.commandandcontrol.CommandRegistry;
+import com.hitorro.util.core.Env;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.core.thread.EnhancedThreadFactory;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.PriorityBlockingQueue;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
+
 public class RPCListener implements Runnable {
 	static EnhancedThreadFactory m_factory = new EnhancedThreadFactory("RPC",
 			"RPC", true);

@@ -1,24 +1,5 @@
-package com.hitorro.network.resourcecache;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.network.rpc.RPCMessage;
-import com.hitorro.network.rpc.RPCService;
-import com.hitorro.util.commandandcontrol.Command;
-import com.hitorro.util.commandandcontrol.CommandSession;
-import com.hitorro.util.commandandcontrol.Response;
-import com.hitorro.util.commandandcontrol.RestOperations;
-import com.hitorro.util.commandandcontrol.ano.CommandArgument;
-import com.hitorro.util.commandandcontrol.ano.CommandDef;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.io.resourcecache.ResourceDirectoryVersionNode;
-import com.hitorro.util.json.keys.IntegerProperty;
-import com.hitorro.util.json.keys.StringProperty;
-
-import java.io.File;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +19,25 @@ import java.io.File;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.resourcecache;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.network.rpc.RPCMessage;
+import com.hitorro.network.rpc.RPCService;
+import com.hitorro.util.commandandcontrol.Command;
+import com.hitorro.util.commandandcontrol.CommandSession;
+import com.hitorro.util.commandandcontrol.Response;
+import com.hitorro.util.commandandcontrol.RestOperations;
+import com.hitorro.util.commandandcontrol.ano.CommandArgument;
+import com.hitorro.util.commandandcontrol.ano.CommandDef;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.io.resourcecache.ResourceDirectoryVersionNode;
+import com.hitorro.util.json.keys.IntegerProperty;
+import com.hitorro.util.json.keys.StringProperty;
+
+import java.io.File;
+
 @CommandDef(command = "resourcecache.getremote", description = "Get a resource cache entry from a remote host")
 public class GetRemoteResource extends Command {
 	@CommandArgument(required = true)

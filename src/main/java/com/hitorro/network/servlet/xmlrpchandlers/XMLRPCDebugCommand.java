@@ -1,21 +1,5 @@
-package com.hitorro.network.servlet.xmlrpchandlers;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.util.commandandcontrol.Command;
-import com.hitorro.util.commandandcontrol.CommandSession;
-import com.hitorro.util.commandandcontrol.Response;
-import com.hitorro.util.commandandcontrol.RestOperations;
-import com.hitorro.util.commandandcontrol.ano.CommandDef;
-import com.hitorro.util.core.Log;
-import org.apache.xmlrpc.XmlRpcException;
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-
-import java.net.URL;
-
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +19,22 @@ import java.net.URL;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.servlet.xmlrpchandlers;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.util.commandandcontrol.Command;
+import com.hitorro.util.commandandcontrol.CommandSession;
+import com.hitorro.util.commandandcontrol.Response;
+import com.hitorro.util.commandandcontrol.RestOperations;
+import com.hitorro.util.commandandcontrol.ano.CommandDef;
+import com.hitorro.util.core.Log;
+import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+
+import java.net.URL;
+
+
 @CommandDef(command = "test.xmlrpc", description = "Test XML RPC call")
 public class XMLRPCDebugCommand extends Command {
 	public boolean execute(String rawValue, JVS args, Response response, CommandSession session, RestOperations operation) throws Exception {

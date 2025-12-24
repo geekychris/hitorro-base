@@ -1,15 +1,5 @@
-package com.hitorro.util.typesystem.btadapter;
-
-import com.hitorro.util.core.Log;
-import com.hitorro.util.core.events.cache.HashCache;
-import com.hitorro.util.core.map.LRUHashMap;
-import com.hitorro.util.keystore.KeyStore;
-import com.hitorro.util.typesystem.ProxyAdapter;
-
-import java.io.IOException;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +19,16 @@ import java.io.IOException;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.btadapter;
+
+import com.hitorro.util.core.Log;
+import com.hitorro.util.core.events.cache.HashCache;
+import com.hitorro.util.core.map.LRUHashMap;
+import com.hitorro.util.keystore.KeyStore;
+import com.hitorro.util.typesystem.ProxyAdapter;
+
+import java.io.IOException;
+
 public class BaseAdapterItemCache<T> extends HashCache<String, T> {
 	private final String adapterName;
 	private String eventName;

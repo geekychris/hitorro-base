@@ -1,10 +1,5 @@
-package com.hitorro.network.netevent;
-
-import com.hitorro.network.rpc.RPCService;
-import com.hitorro.util.startupframework.phases.ServiceDefinition;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +19,11 @@ import com.hitorro.util.startupframework.phases.ServiceDefinition;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.netevent;
+
+import com.hitorro.network.rpc.RPCService;
+import com.hitorro.util.startupframework.phases.ServiceDefinition;
+
 @ServiceDefinition(dependentService = {},
 		shortName = "netevent",
 		description = "Network events service",

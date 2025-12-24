@@ -1,16 +1,5 @@
-package com.hitorro.util.typesystem.annotation;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.hitorro.util.json.keys.BooleanProperty;
-import com.hitorro.util.json.keys.ClassProperty;
-import com.hitorro.util.json.keys.IntegerProperty;
-import com.hitorro.util.json.keys.StringProperty;
-import com.hitorro.util.typesystem.valuesource.ValueSourceForClassStandardImpl;
-
-import java.lang.annotation.Annotation;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +19,17 @@ import java.lang.annotation.Annotation;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.annotation;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.hitorro.util.json.keys.BooleanProperty;
+import com.hitorro.util.json.keys.ClassProperty;
+import com.hitorro.util.json.keys.IntegerProperty;
+import com.hitorro.util.json.keys.StringProperty;
+import com.hitorro.util.typesystem.valuesource.ValueSourceForClassStandardImpl;
+
+import java.lang.annotation.Annotation;
+
 public class TypeClassMetaInfoImpl implements TypeClassMetaInfo {
 	public static final ClassProperty GuidAccessorKey = new ClassProperty("guidaccessor", "", null);
 	public static final StringProperty ShortTypeNameKey = new StringProperty("shortname", "", null);

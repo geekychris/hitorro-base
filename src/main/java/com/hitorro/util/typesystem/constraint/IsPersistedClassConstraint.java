@@ -1,13 +1,5 @@
-package com.hitorro.util.typesystem.constraint;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.hitorro.util.core.HTAssert;
-import com.hitorro.util.core.opers.HTPredicate;
-import com.hitorro.util.typesystem.Type;
-import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +19,14 @@ import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.constraint;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.hitorro.util.core.HTAssert;
+import com.hitorro.util.core.opers.HTPredicate;
+import com.hitorro.util.typesystem.Type;
+import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
+
 public class IsPersistedClassConstraint implements HTPredicate<Type> {
 	public void initForPass() {
 

@@ -1,7 +1,5 @@
-package com.hitorro.network.rpc.cluster.group;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +19,8 @@ package com.hitorro.network.rpc.cluster.group;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.group;
+
 public interface NodeGroupDifferCallback {
 	/**
 	 * Called to report the addition, modification or removal of a node from the full diff mechanism.

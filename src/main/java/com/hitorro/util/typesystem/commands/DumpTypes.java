@@ -1,23 +1,5 @@
-package com.hitorro.util.typesystem.commands;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.util.commandandcontrol.Command;
-import com.hitorro.util.commandandcontrol.CommandSession;
-import com.hitorro.util.commandandcontrol.Response;
-import com.hitorro.util.commandandcontrol.ResponseShape;
-import com.hitorro.util.commandandcontrol.RestOperations;
-import com.hitorro.util.commandandcontrol.ano.CommandDef;
-import com.hitorro.util.commandandcontrol.ano.RespColumn;
-import com.hitorro.util.commandandcontrol.ano.ResponseDefinition;
-import com.hitorro.util.core.ListUtil;
-import com.hitorro.util.core.opers.AlwaysTrueOperator;
-import com.hitorro.util.typesystem.Type;
-import com.hitorro.util.typesystem.TypeManager;
-
-import java.util.List;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +19,24 @@ import java.util.List;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.commands;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.util.commandandcontrol.Command;
+import com.hitorro.util.commandandcontrol.CommandSession;
+import com.hitorro.util.commandandcontrol.Response;
+import com.hitorro.util.commandandcontrol.ResponseShape;
+import com.hitorro.util.commandandcontrol.RestOperations;
+import com.hitorro.util.commandandcontrol.ano.CommandDef;
+import com.hitorro.util.commandandcontrol.ano.RespColumn;
+import com.hitorro.util.commandandcontrol.ano.ResponseDefinition;
+import com.hitorro.util.core.ListUtil;
+import com.hitorro.util.core.opers.AlwaysTrueOperator;
+import com.hitorro.util.typesystem.Type;
+import com.hitorro.util.typesystem.TypeManager;
+
+import java.util.List;
+
 @CommandDef(command = "type.listtypes", description = "Dump all the types known to the type system")
 public class DumpTypes extends Command {
 	@ResponseDefinition(command = "types",

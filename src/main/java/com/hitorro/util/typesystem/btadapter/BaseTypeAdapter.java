@@ -1,9 +1,5 @@
-package com.hitorro.util.typesystem.btadapter;
-
-import com.hitorro.util.typesystem.BaseType;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +19,10 @@ import com.hitorro.util.typesystem.BaseType;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.btadapter;
+
+import com.hitorro.util.typesystem.BaseType;
+
 public interface BaseTypeAdapter<IN extends BaseType, OUT> {
 	Class getHonoringClass();
 

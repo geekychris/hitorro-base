@@ -1,11 +1,5 @@
-package com.hitorro.network.monitor;
-
-import com.hitorro.network.netevent.AlertNetEventHandler;
-import com.hitorro.util.json.keys.IntegerProperty;
-import com.hitorro.util.json.keys.StringProperty;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +19,12 @@ import com.hitorro.util.json.keys.StringProperty;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.monitor;
+
+import com.hitorro.network.netevent.AlertNetEventHandler;
+import com.hitorro.util.json.keys.IntegerProperty;
+import com.hitorro.util.json.keys.StringProperty;
+
 public class MonitorAlertUtil {
 	public static final StringProperty DevicePrefix = new StringProperty("monitor.deviceprefix",
 			"", "/dev/");

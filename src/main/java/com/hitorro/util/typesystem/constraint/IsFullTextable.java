@@ -1,12 +1,5 @@
-package com.hitorro.util.typesystem.constraint;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.hitorro.util.core.opers.HTPredicate;
-import com.hitorro.util.typesystem.TypeFieldIntf;
-import com.hitorro.util.typesystem.annotation.FullTextAttributeMetaInfo;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,13 @@ import com.hitorro.util.typesystem.annotation.FullTextAttributeMetaInfo;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.constraint;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.hitorro.util.core.opers.HTPredicate;
+import com.hitorro.util.typesystem.TypeFieldIntf;
+import com.hitorro.util.typesystem.annotation.FullTextAttributeMetaInfo;
+
 public class IsFullTextable implements HTPredicate<TypeFieldIntf> {
 	public boolean test(TypeFieldIntf field) {
 		FullTextAttributeMetaInfo meta = field.getFullTextMeta();

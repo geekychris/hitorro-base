@@ -1,15 +1,5 @@
-package com.hitorro.network.rpc;
-
-import com.hitorro.util.basefile.fs.BaseFile;
-import com.hitorro.util.io.IOUtil;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +19,16 @@ import java.io.OutputStream;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc;
+
+import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.io.IOUtil;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 public abstract class FileHandleTopic {
 	public abstract String getTopic();
 

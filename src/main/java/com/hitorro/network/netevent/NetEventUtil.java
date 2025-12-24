@@ -1,17 +1,5 @@
-package com.hitorro.network.netevent;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.network.rpc.RPCMessage;
-import com.hitorro.network.rpc.RPCService;
-import com.hitorro.network.rpc.cluster.ClusterService;
-import com.hitorro.network.rpc.cluster.IDef;
-import com.hitorro.util.io.StoreException;
-
-import java.io.IOException;
-import java.util.List;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,18 @@ import java.util.List;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.netevent;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.network.rpc.RPCMessage;
+import com.hitorro.network.rpc.RPCService;
+import com.hitorro.network.rpc.cluster.ClusterService;
+import com.hitorro.network.rpc.cluster.IDef;
+import com.hitorro.util.io.StoreException;
+
+import java.io.IOException;
+import java.util.List;
+
 public class NetEventUtil {
 	public static final void sendSingleEventNow(String subsystem,
 												String topic,

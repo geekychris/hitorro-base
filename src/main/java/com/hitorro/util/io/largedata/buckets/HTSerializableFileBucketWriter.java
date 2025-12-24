@@ -1,17 +1,5 @@
-package com.hitorro.util.io.largedata.buckets;
-
-import com.hitorro.util.basefile.fs.BaseFile;
-import com.hitorro.util.io.largedata.BaseFileAccessingObjectFactory;
-import com.hitorro.util.io.largedata.iterator.HTSerializableIteratorSink;
-import com.hitorro.util.typesystem.HTSerializable;
-import org.apache.commons.collections.iterators.ArrayIterator;
-
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,18 @@ import java.util.List;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.io.largedata.buckets;
+
+import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.io.largedata.BaseFileAccessingObjectFactory;
+import com.hitorro.util.io.largedata.iterator.HTSerializableIteratorSink;
+import com.hitorro.util.typesystem.HTSerializable;
+import org.apache.commons.collections.iterators.ArrayIterator;
+
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
+
 public class HTSerializableFileBucketWriter<T extends HTSerializable> extends BaseFileBucketWriter<T> {
 	public HTSerializableFileBucketWriter(int maxLength, BaseFile directory, String extension, BaseFileAccessingObjectFactory fact) {
 		super(maxLength, directory, extension, fact);

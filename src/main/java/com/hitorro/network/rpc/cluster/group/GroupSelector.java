@@ -1,18 +1,5 @@
-package com.hitorro.network.rpc.cluster.group;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.util.core.Log;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +19,19 @@ import java.util.function.Predicate;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.group;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.util.core.Log;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+
 public class GroupSelector {
 	private static final GroupSelector selector = new GroupSelector();
 

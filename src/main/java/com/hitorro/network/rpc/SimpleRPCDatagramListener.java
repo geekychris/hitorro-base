@@ -1,19 +1,5 @@
-package com.hitorro.network.rpc;
-
-import com.hitorro.util.commandandcontrol.CommandRegistry;
-import com.hitorro.util.core.Console;
-import com.hitorro.util.core.Log;
-
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.Socket;
-import java.net.SocketException;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +19,20 @@ import java.net.SocketException;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc;
+
+import com.hitorro.util.commandandcontrol.CommandRegistry;
+import com.hitorro.util.core.Console;
+import com.hitorro.util.core.Log;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+import java.net.Socket;
+import java.net.SocketException;
+
 public class SimpleRPCDatagramListener implements Runnable {
 	public static final int BufferSize = 1024 * 16;
 	public CommandRegistry m_Command_registry;

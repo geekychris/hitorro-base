@@ -1,10 +1,5 @@
-package com.hitorro.util.typesystem.btadapter;
-
-import com.hitorro.util.keystore.KeyStore;
-import com.hitorro.util.typesystem.ProxyAdapter;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +19,11 @@ import com.hitorro.util.typesystem.ProxyAdapter;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.btadapter;
+
+import com.hitorro.util.keystore.KeyStore;
+import com.hitorro.util.typesystem.ProxyAdapter;
+
 public abstract class BaseAdapterItemCacheFetcher<T> {
 	public abstract T getAndMap(String guid, String adapterName, KeyStore<T> store, ProxyAdapter<T> proxy);
 }

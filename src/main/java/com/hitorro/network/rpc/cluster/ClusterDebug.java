@@ -1,22 +1,5 @@
-package com.hitorro.network.rpc.cluster;
-
-import com.hitorro.jsontypesystem.JVS;
-import com.hitorro.util.commandandcontrol.Command;
-import com.hitorro.util.commandandcontrol.CommandSession;
-import com.hitorro.util.commandandcontrol.Response;
-import com.hitorro.util.commandandcontrol.ResponseShape;
-import com.hitorro.util.commandandcontrol.RestOperations;
-import com.hitorro.util.commandandcontrol.ano.ColumnGroup;
-import com.hitorro.util.commandandcontrol.ano.CommandArgument;
-import com.hitorro.util.commandandcontrol.ano.CommandDef;
-import com.hitorro.util.commandandcontrol.ano.RespColumn;
-import com.hitorro.util.commandandcontrol.ano.ResponseDefinition;
-import com.hitorro.util.json.keys.BooleanProperty;
-
-import java.util.Date;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +19,23 @@ import java.util.Date;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster;
+
+import com.hitorro.jsontypesystem.JVS;
+import com.hitorro.util.commandandcontrol.Command;
+import com.hitorro.util.commandandcontrol.CommandSession;
+import com.hitorro.util.commandandcontrol.Response;
+import com.hitorro.util.commandandcontrol.ResponseShape;
+import com.hitorro.util.commandandcontrol.RestOperations;
+import com.hitorro.util.commandandcontrol.ano.ColumnGroup;
+import com.hitorro.util.commandandcontrol.ano.CommandArgument;
+import com.hitorro.util.commandandcontrol.ano.CommandDef;
+import com.hitorro.util.commandandcontrol.ano.RespColumn;
+import com.hitorro.util.commandandcontrol.ano.ResponseDefinition;
+import com.hitorro.util.json.keys.BooleanProperty;
+
+import java.util.Date;
+
 @CommandDef(command = "cluster.list", description = "Dump cluster info")
 public class ClusterDebug extends Command {
 	@CommandArgument(required = false)

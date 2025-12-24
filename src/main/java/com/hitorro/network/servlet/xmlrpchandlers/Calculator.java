@@ -1,7 +1,5 @@
-package com.hitorro.network.servlet.xmlrpchandlers;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +19,8 @@ package com.hitorro.network.servlet.xmlrpchandlers;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.servlet.xmlrpchandlers;
+
 public class Calculator {
 	public int add(int i1, int i2) {
 		return i1 + i2;

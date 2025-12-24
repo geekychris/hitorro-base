@@ -1,19 +1,5 @@
-package com.hitorro.util.io.largedata.iterator;
-
-import com.hitorro.util.basefile.fs.BaseFile;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.BaseSession;
-import com.hitorro.util.typesystem.HTObjectOutputStream;
-import com.hitorro.util.typesystem.HTObjectStreamFactory;
-import com.hitorro.util.typesystem.HTSerializable;
-
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Iterator;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +19,20 @@ import java.util.Iterator;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.io.largedata.iterator;
+
+import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.BaseSession;
+import com.hitorro.util.typesystem.HTObjectOutputStream;
+import com.hitorro.util.typesystem.HTObjectStreamFactory;
+import com.hitorro.util.typesystem.HTSerializable;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Iterator;
+
 public class HTSerializableIteratorSink<T extends HTSerializable> implements OutputIteratorSink<T> {
 	private boolean m_shouldCloseOnCompletion;
 	private OutputStream m_os;

@@ -1,18 +1,5 @@
-package com.hitorro.util.auth;
-
-import com.hitorro.util.core.Audit;
-import com.hitorro.util.core.Audit.AuditStatus;
-import com.hitorro.util.core.Auditable;
-import com.hitorro.util.core.string.StringUtil;
-import com.hitorro.util.startupframework.phases.ServiceDefinition;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +19,19 @@ import java.util.Map;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.auth;
+
+import com.hitorro.util.core.Audit;
+import com.hitorro.util.core.Audit.AuditStatus;
+import com.hitorro.util.core.Auditable;
+import com.hitorro.util.core.string.StringUtil;
+import com.hitorro.util.startupframework.phases.ServiceDefinition;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @ServiceDefinition(dependentService = {},
 		shortName = "auth",
 		description = "Basic mechanism for validating user login credentials",

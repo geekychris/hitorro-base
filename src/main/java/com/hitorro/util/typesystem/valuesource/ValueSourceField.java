@@ -1,7 +1,5 @@
-package com.hitorro.util.typesystem.valuesource;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +19,8 @@ package com.hitorro.util.typesystem.valuesource;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.valuesource;
+
 public class ValueSourceField<T extends Object> {
 	// XXX TODO Is this right?  should we be passing object and returning T?
 	public T getValue(T o) {

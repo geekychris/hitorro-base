@@ -1,18 +1,5 @@
-package com.hitorro.util.typesystem.valuesource;
-
-
-import com.hitorro.util.core.Console;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.core.string.StringUtil;
-import org.objectweb.asm.ClassWriter;
-import org.objectweb.asm.MethodVisitor;
-import org.objectweb.asm.Opcodes;
-
-import java.lang.reflect.Method;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +19,19 @@ import java.lang.reflect.Method;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem.valuesource;
+
+
+import com.hitorro.util.core.Console;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.core.string.StringUtil;
+import org.objectweb.asm.ClassWriter;
+import org.objectweb.asm.MethodVisitor;
+import org.objectweb.asm.Opcodes;
+
+import java.lang.reflect.Method;
+
 public class ValueSourceFieldImplDump implements Opcodes {
 	/**
 	 * Code generation is avalailable by calling : org.objectweb.asm.util.ASMifier.main(new

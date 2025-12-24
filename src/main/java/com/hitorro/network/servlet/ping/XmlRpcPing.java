@@ -1,17 +1,5 @@
-package com.hitorro.network.servlet.ping;
-
-import com.hitorro.util.core.Log;
-import org.apache.xmlrpc.XmlRpcException;
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
-import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Vector;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,17 @@ import java.util.Vector;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.servlet.ping;
+
+import com.hitorro.util.core.Log;
+import org.apache.xmlrpc.XmlRpcException;
+import org.apache.xmlrpc.client.XmlRpcClient;
+import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import org.apache.xmlrpc.client.XmlRpcCommonsTransportFactory;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Vector;
 
 /**
  * This class uses XML-RPC to ping integrators using a simple interface that can ping multiple vendors at one time. It

@@ -1,13 +1,5 @@
-package com.hitorro.network.monitor;
-
-import com.hitorro.util.core.Constants;
-import com.hitorro.util.io.DiskUsage;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +19,14 @@ import java.util.List;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.monitor;
+
+import com.hitorro.util.core.Constants;
+import com.hitorro.util.io.DiskUsage;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class LowDiskSpaceValidator extends MonitorValidator {
 	private final String devicesStartingWith;
 	private final int minPercentage;

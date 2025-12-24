@@ -1,21 +1,5 @@
-package com.hitorro.util.io.largedata.iterator;
-
-import com.hitorro.util.basefile.fs.BaseFile;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.core.iterator.AbstractIterator;
-import com.hitorro.util.io.FileUtil;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.BaseSession;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTObjectStreamFactory;
-import com.hitorro.util.typesystem.HTSerializable;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +19,22 @@ import java.io.InputStream;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.io.largedata.iterator;
+
+import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.core.iterator.AbstractIterator;
+import com.hitorro.util.io.FileUtil;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.BaseSession;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTObjectStreamFactory;
+import com.hitorro.util.typesystem.HTSerializable;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class HTSerializableInputIterator<T extends HTSerializable, S extends BaseSession> extends AbstractIterator<T> {
 	private HTObjectInputStream m_is;
 

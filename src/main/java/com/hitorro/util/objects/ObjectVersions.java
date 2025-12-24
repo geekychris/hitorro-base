@@ -1,16 +1,5 @@
-package com.hitorro.util.objects;
-
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.BaseType;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTObjectOutputStream;
-import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
-
-import java.io.IOException;
-import java.util.Date;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +19,17 @@ import java.util.Date;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.objects;
+
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.BaseType;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTObjectOutputStream;
+import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
+
+import java.io.IOException;
+import java.util.Date;
+
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.ObjectVersions,
 		isView = false,
 		isPersisted = true,

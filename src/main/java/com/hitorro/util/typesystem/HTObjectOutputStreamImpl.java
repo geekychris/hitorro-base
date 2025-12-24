@@ -1,24 +1,5 @@
-package com.hitorro.util.typesystem;
-
-import com.hitorro.util.core.string.StringBuilderUtil;
-import com.hitorro.util.core.valuemap.DomainValueIntf;
-import com.hitorro.util.io.IOUtil;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.objects.DomainValue;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,6 +19,25 @@ import java.util.Set;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem;
+
+import com.hitorro.util.core.string.StringBuilderUtil;
+import com.hitorro.util.core.valuemap.DomainValueIntf;
+import com.hitorro.util.io.IOUtil;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.objects.DomainValue;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public class HTObjectOutputStreamImpl implements HTObjectOutputStream {
 	/*
 		Identity apply of guid's that already exist in the stream.  If they

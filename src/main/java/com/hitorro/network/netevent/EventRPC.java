@@ -1,17 +1,5 @@
-package com.hitorro.network.netevent;
-
-import com.hitorro.network.rpc.RPCHandler;
-import com.hitorro.network.rpc.RPCMessage;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTObjectOutputStream;
-
-import java.io.IOException;
-import java.net.Socket;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,18 @@ import java.net.Socket;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.netevent;
+
+import com.hitorro.network.rpc.RPCHandler;
+import com.hitorro.network.rpc.RPCMessage;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTObjectOutputStream;
+
+import java.io.IOException;
+import java.net.Socket;
+
 public class EventRPC extends RPCHandler {
 	public static final String EventRPCMethod = "event";
 

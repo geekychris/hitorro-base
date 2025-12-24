@@ -1,10 +1,5 @@
-package com.hitorro.network.rpc.cluster.group;
-
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.typesystem.HTSerializable;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +19,11 @@ import com.hitorro.util.typesystem.HTSerializable;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster.group;
+
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.typesystem.HTSerializable;
+
 public abstract class MemberDefinition implements HTSerializable, Comparable<MemberDefinition> {
 	protected String name;
 	protected long lastTouched;

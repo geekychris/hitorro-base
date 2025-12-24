@@ -1,20 +1,5 @@
-package com.hitorro.network.resourcecache;
-
-import com.hitorro.network.rpc.FileHandleTopic;
-import com.hitorro.network.rpc.FileUpload;
-import com.hitorro.network.rpc.RPCMessage;
-import com.hitorro.util.basefile.fs.BaseFile;
-import com.hitorro.util.io.resourcecache.ResourceDirectoryVersionNode;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceCache;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceContext;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceDirectoryVersionNode;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTSerializable;
-
-import java.io.IOException;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,6 +19,20 @@ import java.io.IOException;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.resourcecache;
+
+import com.hitorro.network.rpc.FileHandleTopic;
+import com.hitorro.network.rpc.FileUpload;
+import com.hitorro.network.rpc.RPCMessage;
+import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.io.resourcecache.ResourceDirectoryVersionNode;
+import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceCache;
+import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceContext;
+import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceDirectoryVersionNode;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTSerializable;
+
+import java.io.IOException;
 
 public class ResourceCopyFileHandleTopic extends FileHandleTopic {
 	public static final String ResourceCopyFileHandleTopicKey = "resourcecopy";

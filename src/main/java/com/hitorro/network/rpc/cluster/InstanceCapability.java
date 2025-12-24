@@ -1,16 +1,5 @@
-package com.hitorro.network.rpc.cluster;
-
-import com.hitorro.util.core.string.StringUtil;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTObjectOutputStream;
-import com.hitorro.util.typesystem.HTSerializable;
-import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
-
-import java.io.IOException;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,6 +19,17 @@ import java.io.IOException;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc.cluster;
+
+import com.hitorro.util.core.string.StringUtil;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTObjectOutputStream;
+import com.hitorro.util.typesystem.HTSerializable;
+import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
+
+import java.io.IOException;
+
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.InstanceCapability,
 		isView = false,
 		isPersisted = false,

@@ -1,12 +1,5 @@
-package com.hitorro.network.netevent;
-
-import com.hitorro.network.monitor.MonitorService;
-import com.hitorro.network.rpc.RPCMessage;
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.core.string.StringUtil;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,13 @@ import com.hitorro.util.core.string.StringUtil;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.netevent;
+
+import com.hitorro.network.monitor.MonitorService;
+import com.hitorro.network.rpc.RPCMessage;
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.core.string.StringUtil;
+
 public class AlertNetEventHandler extends NetEventHandler {
 	public static final String AlertKey = "alert";
 

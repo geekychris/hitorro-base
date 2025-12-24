@@ -1,12 +1,5 @@
-package com.hitorro.util.startupframework;
-
-import com.hitorro.util.core.opers.LogicalAndOperator;
-import com.hitorro.util.core.opers.LogicalNotOperator;
-import com.hitorro.util.core.opers.LogicalOrOperator;
-import com.hitorro.util.startupframework.phases.ServiceDefinition;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,13 @@ import com.hitorro.util.startupframework.phases.ServiceDefinition;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.startupframework;
+
+import com.hitorro.util.core.opers.LogicalAndOperator;
+import com.hitorro.util.core.opers.LogicalNotOperator;
+import com.hitorro.util.core.opers.LogicalOrOperator;
+import com.hitorro.util.startupframework.phases.ServiceDefinition;
+
 @ServiceDefinition(dependentService = {},
 		shortName = "opers",
 		description = "Opers service",

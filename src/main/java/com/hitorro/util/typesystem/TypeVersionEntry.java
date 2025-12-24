@@ -1,12 +1,5 @@
-package com.hitorro.util.typesystem;
-
-import com.hitorro.util.core.HTVersionable;
-
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,6 +19,13 @@ import java.io.ObjectOutput;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.util.typesystem;
+
+import com.hitorro.util.core.HTVersionable;
+
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+
 public class TypeVersionEntry implements HTVersionable {
 	private String m_shortName;
 	private String m_className;

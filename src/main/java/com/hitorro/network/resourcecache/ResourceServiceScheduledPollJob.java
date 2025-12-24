@@ -1,17 +1,5 @@
-package com.hitorro.network.resourcecache;
-
-import com.hitorro.util.core.Constants;
-import com.hitorro.util.core.Log;
-import com.hitorro.util.io.resourcecache.ResourceToPoll;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceCache;
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-
-import java.io.IOException;
-import java.util.List;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,18 @@ import java.util.List;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.resourcecache;
+
+import com.hitorro.util.core.Constants;
+import com.hitorro.util.core.Log;
+import com.hitorro.util.io.resourcecache.ResourceToPoll;
+import com.hitorro.util.io.resourcecache.basefile.BaseFileResourceCache;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+
+import java.io.IOException;
+import java.util.List;
+
 public class ResourceServiceScheduledPollJob implements Job {
 	public ResourceServiceScheduledPollJob() {
 	}

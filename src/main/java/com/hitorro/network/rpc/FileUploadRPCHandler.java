@@ -1,17 +1,5 @@
-package com.hitorro.network.rpc;
-
-import com.hitorro.util.core.string.Fmt;
-import com.hitorro.util.io.StoreException;
-import com.hitorro.util.typesystem.HTObjectInputStream;
-import com.hitorro.util.typesystem.HTObjectOutputStream;
-
-import java.io.IOException;
-import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
-
 /*
- * Copyright (c) 2006 - 2025 Chris Collins
+ * Copyright (c) 2006-2025 Chris Collins
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +19,18 @@ import java.util.Map;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+package com.hitorro.network.rpc;
+
+import com.hitorro.util.core.string.Fmt;
+import com.hitorro.util.io.StoreException;
+import com.hitorro.util.typesystem.HTObjectInputStream;
+import com.hitorro.util.typesystem.HTObjectOutputStream;
+
+import java.io.IOException;
+import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
 public class FileUploadRPCHandler extends RPCHandler {
 	public static final String FileUploadRPCHandlerKey = "fileupload";
 	private final Map<String, FileHandleTopic> m_topics = new HashMap<String, FileHandleTopic>();
