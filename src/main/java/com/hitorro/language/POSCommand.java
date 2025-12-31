@@ -57,10 +57,9 @@ public class POSCommand extends Command {
 			List<String>[] tags = p.getTags();
 			String[] pe0 = p.getTagsEnglish(0);
 			String[] pe1 = p.getTagsEnglish(1);
-			String[] pe2 = p.getTagsEnglish(2);
 			List<GenericKeyValue> list = new ArrayList();
 			for (int i = 0; i < text.length; i++) {
-				String vals = getVals(pe0[i], pe1[i], pe2[i]);
+				String vals = getVals(pe0[i], pe1[i]);
 				GenericKeyValue kv = new GenericKeyValue(text[i], vals);
 				list.add(kv);
 			}

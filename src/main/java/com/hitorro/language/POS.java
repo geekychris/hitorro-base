@@ -122,7 +122,7 @@ public class POS {
 		for (int j = 0; j < sequences.length; j++) {
 			Sequence s = sequences[j];
 			List<String> outcomes = s.getOutcomes();
-			tags[j] = outcomes;
+			tags[j] = new ArrayList<>(outcomes);
 			probs[j] = s.getProbs();
 		}
 		return tags;
@@ -142,7 +142,7 @@ public class POS {
 
 	public String[] getTagsEnglish(int pos) {
 		List<String>[] t = getTags();
-		if (t == null) {
+		if (t == null || t.length <=pos) {
 			return null;
 		}
 		String[] temp = new String[t[pos].size()];
