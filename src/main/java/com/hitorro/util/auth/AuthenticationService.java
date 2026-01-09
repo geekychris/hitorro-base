@@ -41,7 +41,7 @@ import java.util.Map;
 		dependentServiceInterfaces = {})
 public class AuthenticationService implements Auditable {
 	private static AuthenticationService s_service = null;
-	private final List<AuthenticationMethod> m_defaultList = new ArrayList<AuthenticationMethod>();
+ 	private final List<AuthenticationMethod> m_defaultList = new ArrayList<AuthenticationMethod>();
 	private final Map<String, AuthenticationMethod> m_methods = new HashMap<String, AuthenticationMethod>();
 
 	public static final AuthenticationService getService() {
