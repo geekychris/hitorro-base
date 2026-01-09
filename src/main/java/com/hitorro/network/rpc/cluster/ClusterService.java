@@ -63,7 +63,7 @@ public class ClusterService implements ClusterServiceInterface, BaseCollectionCh
 	public static final String SingletonString = "s:";
 	public static IDef me = new IDef().initLocal();
 	private static ClusterService s_service;
-	private String m_dbGroupSingletonName;
+	private String dbGroupSingletonName;
 	private final Object indexUpdateLock = new Object();
 	private boolean isStarted = false;
 
@@ -99,8 +99,8 @@ public class ClusterService implements ClusterServiceInterface, BaseCollectionCh
 
 	public boolean getShouldInitDBGroup() {
 		if (isMemberOfDBGroup()) {
-			m_dbGroupSingletonName = StringUtil.strcat("DBGROUP:", Env.getDatabaseId());
-			//ClusterService.getThisInstanceDefinition().addInstanceCapability(m_dbGroupSingletonName, "", "", "");
+			dbGroupSingletonName = StringUtil.strcat("DBGROUP:", Env.getDatabaseId());
+			//ClusterService.getThisInstanceDefinition().addInstanceCapability(dbGroupSingletonName, "", "", "");
 			return true;
 		}
 		return false;

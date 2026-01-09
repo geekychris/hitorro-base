@@ -37,39 +37,39 @@ import java.io.IOException;
 public class StatusMessage implements HTSerializable {
 	public static final int SerializationVersion = 2;
 
-	private long m_serverStartTime;
-	private String m_serverState = "Unknown";
+	private long serverStartTime;
+	private String serverState = "Unknown";
 	private int m_pid = BaseCommandLine.getCommandLine().processId;
 
 	public StatusMessage() {
 	}
 
 	public void init() {
-		m_serverStartTime = BaseCommandLine.getCommandLine().processStartTime;
+		serverStartTime = BaseCommandLine.getCommandLine().processStartTime;
 
 	}
 
 	public long getStartTime() {
-		return m_serverStartTime;
+		return serverStartTime;
 	}
 
 	public String getServerState() {
-		return m_serverState;
+		return serverState;
 	}
 
 	public void setServerState(String state) {
-		m_serverState = state;
+		serverState = state;
 	}
 
 	public long getUpTime() {
-		return System.currentTimeMillis() - m_serverStartTime;
+		return System.currentTimeMillis() - serverStartTime;
 	}
 
 	public void serialize(HTObjectOutputStream os) throws IOException, StoreException {
 		os.writeInt(getSerializationVersion());
-		os.writeString(m_serverState);
+		os.writeString(serverState);
 		os.writeInt(m_pid);
-		os.writeLong(m_serverStartTime);
+		os.writeLong(serverStartTime);
 
 	}
 
@@ -78,10 +78,10 @@ public class StatusMessage implements HTSerializable {
 		int version = os.readInt();
 		switch (version) {
 			case 2:
-				m_serverState = os.readString();
+				serverState = os.readString();
 				m_pid = os.readInt();
 			case 1:
-				m_serverStartTime = os.readLong();
+				serverStartTime = os.readLong();
 		}
 	}
 

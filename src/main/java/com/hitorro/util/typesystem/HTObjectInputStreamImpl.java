@@ -49,9 +49,9 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 	private HTObjectOutputStream.LoadType m_loadType = HTObjectOutputStream.LoadType.Replace;
 	private boolean m_ignoreInlineContent = false;
 	// save listFiles that doesnt put till we have fully formed graphs
-	private final List<HTSerializable> m_saveList = new ArrayList<HTSerializable>();
+	private final List<HTSerializable> saveList = new ArrayList<HTSerializable>();
 
-	private final List<HTSerializable> m_deleteList = new ArrayList<HTSerializable>();
+	private final List<HTSerializable> deleteList = new ArrayList<HTSerializable>();
 	/**
 	 * References to basetype objects (persisted stuff) that have been retrieved or deserialized within the current
 	 * transaction.  We dont want objects within our transaction to be fetched from the db as we will have to enable
@@ -93,8 +93,8 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 	public void clearIdTracker() {
 		m_references.clear();
 		m_nonPersistedReferences.clear();
-		m_saveList.clear();
-		m_deleteList.clear();
+		saveList.clear();
+		deleteList.clear();
 	}
 
 	private void init(InputStream is,
@@ -118,7 +118,7 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 	}
 
 	public int getNonCommittedObjectCount() {
-		return m_saveList.size();
+		return saveList.size();
 	}
 
 	public void flushRefs() {
@@ -128,7 +128,7 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 	}
 
 	public void rollback() {
-		m_saveList.clear();
+		saveList.clear();
 		m_references.clear();
 		if (m_session != null) {
 			m_session.getSessionFactory().rollbackCloseSession(m_session);
@@ -137,13 +137,13 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 
 	public void commit() {
 		if (m_session != null) {
-			Collections.sort(m_saveList, new Comp());
-			for (HTSerializable pt : m_saveList) {
+			Collections.sort(saveList, new Comp());
+			for (HTSerializable pt : saveList) {
 				m_session.saveOrUpdate(pt);
 			}
 			m_session.getSessionFactory().commitAndCloseSession(m_session);
 		}
-		m_saveList.clear();
+		saveList.clear();
 		m_references.clear();
 	}
 
@@ -175,7 +175,7 @@ public class HTObjectInputStreamImpl<S extends BaseSession> implements HTObjectI
 	}
 
 	private void saveOrUpdate(HTSerializable ser) {
-		m_saveList.add(ser);
+		saveList.add(ser);
 	}
 
 	public HTSerializable readBaseTypeFromSerialzation(String guid)

@@ -53,7 +53,7 @@ public class HTObjectOutputStreamImpl implements HTObjectOutputStream {
 	/**
 	 * Register for uniquely identifying non persisted objects in a stream
 	 */
-	private long m_uniqueIdCounter;
+	private long uniqueIdCounter;
 
 	private boolean m_includeContent = false;
 
@@ -126,7 +126,7 @@ public class HTObjectOutputStreamImpl implements HTObjectOutputStream {
 		} else {
 			if (refGuid == null) {
 				m_buff.setLength(0);
-				refGuid = StringBuilderUtil.strcat(m_buff, t.getName(), ":", Long.toString(m_uniqueIdCounter++)).toString();
+				refGuid = StringBuilderUtil.strcat(m_buff, t.getName(), ":", Long.toString(uniqueIdCounter++)).toString();
 			}
 			m_identity.put(ref, refGuid);
 			serializeVersionedObject(refGuid, bt);

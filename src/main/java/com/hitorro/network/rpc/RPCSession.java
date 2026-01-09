@@ -36,10 +36,10 @@ public class RPCSession implements Runnable, Comparable<RPCSession> {
 	private InputStream m_is;
 	private OutputStream m_os;
 	private Socket m_socket;
-	private final RPCService m_rpcService;
+	private final RPCService rpcService;
 
 	public RPCSession(RPCService service) {
-		m_rpcService = service;
+		rpcService = service;
 	}
 
 	public void run() {

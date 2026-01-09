@@ -90,7 +90,7 @@ public class TokenAuthenticationMethodImpl implements TokenAuthenticationMethod 
 class TokenDetails {
 	private final String m_token;
 	private final String m_key;
-	private long m_lastTouchted;
+	private long lastTouchted;
 
 	public TokenDetails(String userId) {
 		String temp = Fmt.S("%s%s", userId, System.currentTimeMillis());
@@ -112,10 +112,10 @@ class TokenDetails {
 	}
 
 	public long getTouched() {
-		return m_lastTouchted;
+		return lastTouchted;
 	}
 
 	public void touch() {
-		m_lastTouchted = System.currentTimeMillis();
+		lastTouchted = System.currentTimeMillis();
 	}
 }

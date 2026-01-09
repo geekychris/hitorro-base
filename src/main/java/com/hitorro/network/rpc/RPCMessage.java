@@ -58,25 +58,25 @@ public class RPCMessage implements HTSerializable {
 	// error states
 	private transient RPCHandler handler;
 	// on wire variables
-	private boolean m_synchronousRequest = true;
-	private String m_fromIpAddress;
-	private int m_fromPortNumber;
-	private String m_toIpAddress;
-	private int m_toPortNumber;
-	private String m_rpcMethod;
+	private boolean synchronousRequest = true;
+	private String fromIpAddress;
+	private int fromPortNumber;
+	private String toIpAddress;
+	private int toPortNumber;
+	private String rpcMethod;
 	private String m_cluster;
-	private String m_clearArguments;
+	private String clearArguments;
 	private HTSerializable m_payload;
 	private int m_status;
-	private String m_statusMessage;
-	private boolean m_requiresDMSSession = false;
-	private long m_sequenceId = 310687;
+	private String statusMessage;
+	private boolean requiresDMSSession = false;
+	private long sequenceId = 310687;
 	private boolean m_request = true;
 
 	// not to be persisted
 	private transient Socket m_socket;
-	private transient OutputStream m_rawOut;
-	private transient InputStream m_rawIn;
+	private transient OutputStream rawOut;
+	private transient InputStream rawIn;
 
 
 	public RPCMessage() {
@@ -84,11 +84,11 @@ public class RPCMessage implements HTSerializable {
 	}
 
 	public boolean createSocket() throws IOException {
-		SocketAddress addr = new InetSocketAddress(m_toIpAddress, m_toPortNumber);
+		SocketAddress addr = new InetSocketAddress(toIpAddress, toPortNumber);
 		m_socket = new Socket();
 		m_socket.connect(addr, 1000 * 10);
-		m_rawOut = m_socket.getOutputStream();
-		m_rawIn = m_socket.getInputStream();
+		rawOut = m_socket.getOutputStream();
+		rawIn = m_socket.getInputStream();
 		return true;
 	}
 
@@ -96,11 +96,11 @@ public class RPCMessage implements HTSerializable {
 		RPCMessage response = new RPCMessage();
 		response.setEndPoints(myIp,
 				myPort,
-				m_fromIpAddress,
-				m_fromPortNumber,
-				m_rpcMethod,
-				m_synchronousRequest);
-		response.m_sequenceId = m_sequenceId;
+				fromIpAddress,
+				fromPortNumber,
+				rpcMethod,
+				synchronousRequest);
+		response.sequenceId = sequenceId;
 		response.m_request = false;
 		response.m_cluster = RPCService.s_service.getClusterName();
 		return response;
@@ -108,41 +108,41 @@ public class RPCMessage implements HTSerializable {
 
 	public RPCMessage createResponse() {
 		RPCMessage response = new RPCMessage();
-		response.setEndPoints(m_toIpAddress,
-				m_toPortNumber,
-				m_fromIpAddress,
-				m_fromPortNumber,
-				m_rpcMethod,
-				m_synchronousRequest);
-		response.m_sequenceId = m_sequenceId;
+		response.setEndPoints(toIpAddress,
+				toPortNumber,
+				fromIpAddress,
+				fromPortNumber,
+				rpcMethod,
+				synchronousRequest);
+		response.sequenceId = sequenceId;
 		response.m_request = false;
 		response.m_cluster = RPCService.s_service.getClusterName();
 		return response;
 	}
 
 	public long aquireNewSequenceNumber(RPCService service) {
-		m_sequenceId = service.getSequenceNumber();
-		return m_sequenceId;
+		sequenceId = service.getSequenceNumber();
+		return sequenceId;
 	}
 
 	public int getFromPortNumber() {
-		return m_fromPortNumber;
+		return fromPortNumber;
 	}
 
 	public int getToPortNumber() {
-		return m_toPortNumber;
+		return toPortNumber;
 	}
 
 	public String getFromIPAddress() {
-		return m_fromIpAddress;
+		return fromIpAddress;
 	}
 
 	public String getToIPAddress() {
-		return m_toIpAddress;
+		return toIpAddress;
 	}
 
 	public long getSequenceNumber() {
-		return m_sequenceId;
+		return sequenceId;
 	}
 
 	/**
@@ -151,7 +151,7 @@ public class RPCMessage implements HTSerializable {
 	 * @param number
 	 */
 	public void setSequenceNumber(long number) {
-		m_sequenceId = number;
+		sequenceId = number;
 	}
 
 	/**
@@ -172,7 +172,7 @@ public class RPCMessage implements HTSerializable {
 	}
 
 	public String getMethod() {
-		return m_rpcMethod;
+		return rpcMethod;
 	}
 
 	public RPCMessage sendSyncMessage()
@@ -222,14 +222,14 @@ public class RPCMessage implements HTSerializable {
 		RPCMessage msg = null;
 		try {
 			createSocket();
-			HTObjectOutputStream os = com.hitorro.util.typesystem.HTObjectStreamFactory.getOutputStream(this.m_rawOut, session, false);
+			HTObjectOutputStream os = com.hitorro.util.typesystem.HTObjectStreamFactory.getOutputStream(this.rawOut, session, false);
 			os.writeVersionedObject(this);
 
 			if (outHandler != null) {
 				outHandler.processTail(this, os);
 			}
 			os.flush();
-			HTObjectInputStream is = com.hitorro.util.typesystem.HTObjectStreamFactory.getInputStream(this.m_rawIn, session);
+			HTObjectInputStream is = com.hitorro.util.typesystem.HTObjectStreamFactory.getInputStream(this.rawIn, session);
 			msg = (RPCMessage) is.readVersionedObject();
 			if (returnHandler != null) {
 				returnHandler.processTail(this, is);
@@ -237,12 +237,12 @@ public class RPCMessage implements HTSerializable {
 
 
 		} finally {
-			if (this.m_rawOut != null) {
-				this.m_rawOut.flush();
-				this.m_rawOut.close();
+			if (this.rawOut != null) {
+				this.rawOut.flush();
+				this.rawOut.close();
 			}
-			if (this.m_rawIn != null) {
-				this.m_rawIn.close();
+			if (this.rawIn != null) {
+				this.rawIn.close();
 
 			}
 			if (m_socket != null) {
@@ -269,32 +269,32 @@ public class RPCMessage implements HTSerializable {
 			Log.rpc.error("Unable to send datagram RPCDatagramService not initialized correctly.");
 			return false;
 		}
-		InetAddress address = InetAddress.getByName(this.m_toIpAddress);
-		DatagramPacket packet = new DatagramPacket(buf, buf.length, address, this.m_toPortNumber);
+		InetAddress address = InetAddress.getByName(this.toIpAddress);
+		DatagramPacket packet = new DatagramPacket(buf, buf.length, address, this.toPortNumber);
 		socket.send(packet);
 		return true;
 	}
 
 
 	public void setEndPoints(String fromIp, int fromPort, String toIp, int toPort, String rpcMethod, boolean sync) {
-		m_fromIpAddress = fromIp;
-		m_fromPortNumber = fromPort;
-		m_toIpAddress = toIp;
-		m_toPortNumber = toPort;
-		m_rpcMethod = rpcMethod;
+		fromIpAddress = fromIp;
+		fromPortNumber = fromPort;
+		toIpAddress = toIp;
+		toPortNumber = toPort;
+		this.rpcMethod = rpcMethod;
 		setSynchronousRequest(sync);
 	}
 
 	public boolean getRequiresDMSSession() {
-		return m_requiresDMSSession;
+		return requiresDMSSession;
 	}
 
 	public void setRequiresDMSSession(boolean flag) {
-		m_requiresDMSSession = flag;
+		requiresDMSSession = flag;
 	}
 
 	public boolean getSynchronousRequest() {
-		return m_synchronousRequest;
+		return synchronousRequest;
 	}
 
 	/**
@@ -307,7 +307,7 @@ public class RPCMessage implements HTSerializable {
 	 * @param flag
 	 */
 	public void setSynchronousRequest(boolean flag) {
-		m_synchronousRequest = flag;
+		synchronousRequest = flag;
 	}
 
 	public HTSerializable getPayload() {
@@ -327,37 +327,37 @@ public class RPCMessage implements HTSerializable {
 	}
 
 	public String getStatusMessage() {
-		return m_statusMessage;
+		return statusMessage;
 	}
 
 	public void setStatusMessage(String msg) {
-		m_statusMessage = msg;
+		statusMessage = msg;
 	}
 
 	public String getClearArguments() {
-		return m_clearArguments;
+		return clearArguments;
 	}
 
 	public void setClearArguments(String args) {
-		m_clearArguments = args;
+		clearArguments = args;
 	}
 
 	public void serialize(HTObjectOutputStream os) throws IOException, StoreException {
 		os.writeInt(getSerializationVersion());
 		os.writeInt(MagicRPCNumber);
-		os.writeBoolean(m_synchronousRequest);
-		os.writeBoolean(m_requiresDMSSession);
-		os.writeString(m_rpcMethod);
+		os.writeBoolean(synchronousRequest);
+		os.writeBoolean(requiresDMSSession);
+		os.writeString(rpcMethod);
 		os.writeString(m_cluster);
-		os.writeString(m_fromIpAddress);
-		os.writeInt(m_fromPortNumber);
-		os.writeString(m_toIpAddress);
-		os.writeInt(m_toPortNumber);
-		os.writeString(m_clearArguments);
+		os.writeString(fromIpAddress);
+		os.writeInt(fromPortNumber);
+		os.writeString(toIpAddress);
+		os.writeInt(toPortNumber);
+		os.writeString(clearArguments);
 		os.writeVersionedObject(m_payload);
 		os.writeInt(m_status);
-		os.writeString(m_statusMessage);
-		os.writeLong(m_sequenceId);
+		os.writeString(statusMessage);
+		os.writeLong(sequenceId);
 		os.writeBoolean(m_request);
 	}
 
@@ -369,27 +369,27 @@ public class RPCMessage implements HTSerializable {
 			m_valid = false;
 			return;
 		}
-		m_synchronousRequest = os.readBoolean();
-		m_requiresDMSSession = os.readBoolean();
-		m_rpcMethod = os.readString();
+		synchronousRequest = os.readBoolean();
+		requiresDMSSession = os.readBoolean();
+		rpcMethod = os.readString();
 		//ensure we know how to process this method.
-		setHandler(RPCService.getService().getHandler(m_rpcMethod));
+		setHandler(RPCService.getService().getHandler(rpcMethod));
 
 		if (getHandler() == null) {
 			m_valid = false;
 			return;
 		}
 		m_cluster = os.readString();
-		m_fromIpAddress = os.readString();
-		m_fromPortNumber = os.readInt();
-		m_toIpAddress = os.readString();
-		m_toPortNumber = os.readInt();
-		m_clearArguments = os.readString();
+		fromIpAddress = os.readString();
+		fromPortNumber = os.readInt();
+		toIpAddress = os.readString();
+		toPortNumber = os.readInt();
+		clearArguments = os.readString();
 		m_payload = os.readVersionedObject();
 		m_status = os.readInt();
-		m_statusMessage = os.readString();
+		statusMessage = os.readString();
 
-		m_sequenceId = os.readLong();
+		sequenceId = os.readLong();
 		m_request = os.readBoolean();
 		m_valid = true;
 	}

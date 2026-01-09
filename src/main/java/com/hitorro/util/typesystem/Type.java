@@ -51,20 +51,20 @@ public class Type implements TypeIntf {
 	public static final String SoftFieldSeperator = "|";
 	protected int m_isVersionable = 0;
 	private Type m_superType = null;
-	private Class m_implementationClass = null;
+	private Class implementationClass = null;
 	private String m_shortName = null;
 	private final MapList<OnTrigger.TriggerType, OnTrigger> m_triggers = new MapList<OnTrigger.TriggerType, OnTrigger>();
 	private final Map<String, BaseTypeAdapter> m_adapters = new HashMap<String, BaseTypeAdapter>();
 	// cached copy including all super type fields.
-	private TypeFieldIntf[] m_typeFields = null;
+	private TypeFieldIntf[] typeFields = null;
 	// just our local fields
 	private final Map<String, TypeFieldIntf> m_myTypeFields = new HashMap<String, TypeFieldIntf>();
-	private TypeClassMetaInfo m_classMeta = null;
-	private UiTypeProperties m_uiProperties;
+	private TypeClassMetaInfo classMeta = null;
+	private UiTypeProperties uiProperties;
 	private Accessor m_guidAccessor;
 	private boolean isBag;
 	private TypeFieldIntf languageField;
-	private String[] m_softLinkFields;
+	private String[] softLinkFields;
 	/**
 	 * view name to type object
 	 */
@@ -72,9 +72,9 @@ public class Type implements TypeIntf {
 	/**
 	 * If this is a view, this field points to the owner of the view
 	 */
-	private Type m_viewOwner = null;
-	private String m_viewType;
-	private ValueSourceForClass m_valueSource;
+	private Type viewOwner = null;
+	private String viewType;
+	private ValueSourceForClass valueSource;
 	private String subclassString = null;
 
 	public Type() {
@@ -104,8 +104,8 @@ public class Type implements TypeIntf {
 	}
 
 	public String toString() {
-		if (m_implementationClass != null) {
-			return Fmt.S("%s.%s", m_implementationClass.getCanonicalName(), this.m_shortName);
+		if (implementationClass != null) {
+			return Fmt.S("%s.%s", implementationClass.getCanonicalName(), this.m_shortName);
 		}
 
 		return Constants.EmptyString;
@@ -164,32 +164,32 @@ public class Type implements TypeIntf {
 	}
 
 	public String getShortClassName() {
-		if (m_implementationClass != null) {
-			return ClassUtil.getBareName(m_implementationClass);
+		if (implementationClass != null) {
+			return ClassUtil.getBareName(implementationClass);
 		}
 		return "Unknown";
 	}
 
 	public ValueSourceForClass getValueSource() {
-		return m_valueSource;
+		return valueSource;
 	}
 
 	public String getViewName() {
-		return m_viewType;
+		return viewType;
 	}
 
 	public boolean isPersisted() {
-		if (m_classMeta == null) {
+		if (classMeta == null) {
 			return false;
 		}
-		return m_classMeta.isPersisted();
+		return classMeta.isPersisted();
 	}
 
 	public boolean isView() {
-		if (m_classMeta == null) {
+		if (classMeta == null) {
 			return false;
 		}
-		return m_classMeta.isView();
+		return classMeta.isView();
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class Type implements TypeIntf {
 	 * @return
 	 */
 	public Type getViewsOwner() {
-		return m_viewOwner;
+		return viewOwner;
 	}
 
 	/**
@@ -218,20 +218,20 @@ public class Type implements TypeIntf {
 	 * @return
 	 */
 	public String getSoftGuid(HTSerializable pt) {
-		if (m_softLinkFields == null) {
+		if (softLinkFields == null) {
 			return null;
 		}
 
 		StringBuilder builder = new StringBuilder();
-		builder.append(this.m_classMeta.shortTypeName());
+		builder.append(this.classMeta.shortTypeName());
 		builder.append(":s:");
 
 		boolean secondField = false;
-		for (String field : m_softLinkFields) {
+		for (String field : softLinkFields) {
 			if (secondField) {
 				builder.append(SoftFieldSeperator);
 			}
-			builder.append(m_valueSource.getValue(pt, field).toString());
+			builder.append(valueSource.getValue(pt, field).toString());
 			secondField = true;
 		}
 		return builder.toString();
@@ -244,7 +244,7 @@ public class Type implements TypeIntf {
 	 * @param ano   ClassAnnotations representing gathered class, field and method information about the type
 	 */
 	public void init(Class clazz, ClassAnnotations ano, TypeManager manager, Type parentType) {
-		m_implementationClass = clazz;
+		implementationClass = clazz;
 		List<BeanStyleMethodAnnotation> fas = ano.getBeanStyleMethodAnnotations();
 		extractClassLevelAnnotation(manager, ano);
 		for (BeanStyleMethodAnnotation fa : fas) {
@@ -281,18 +281,18 @@ public class Type implements TypeIntf {
 
 
 	private void initViews(TypeManager mgr) {
-		if (m_uiProperties == null) {
+		if (uiProperties == null) {
 			return;
 		}
-		ViewClassReference[] refs = m_uiProperties.views();
+		ViewClassReference[] refs = uiProperties.views();
 		if (refs == null) {
 			return;
 		}
 		for (ViewClassReference ref : refs) {
 			Type t = mgr.addType(ref.viewClass(), this);
 			if (t != null) {
-				t.m_viewOwner = this;
-				t.m_viewType = ref.name();
+				t.viewOwner = this;
+				t.viewType = ref.name();
 				m_viewToTypeMap.put(ref.name(), t);
 			}
 		}
@@ -306,7 +306,7 @@ public class Type implements TypeIntf {
 	public HTSerializable getNewInstance() {
 
 		try {
-			return (HTSerializable) this.m_implementationClass.newInstance();
+			return (HTSerializable) this.implementationClass.newInstance();
 		} catch (InstantiationException e) {
 			return null;
 		} catch (IllegalAccessException e) {
@@ -365,35 +365,35 @@ public class Type implements TypeIntf {
 	}
 
 	public Class getImplementationClass() {
-		return m_implementationClass;
+		return implementationClass;
 	}
 
 	public TypeClassMetaInfo getTypeMeta() {
-		return m_classMeta;
+		return classMeta;
 	}
 
 	void setTypeMeta(TypeClassMetaInfo meta) {
 		if (meta == null) {
 			return;
 		}
-		m_classMeta = meta;
+		classMeta = meta;
 	}
 
 	public void setValueSourceClass(ValueSourceForClass cls) {
-		m_valueSource = cls;
+		valueSource = cls;
 	}
 
 	void setUITypeMeta(UiTypeProperties props) {
-		m_uiProperties = props;
+		uiProperties = props;
 	}
 
 	public UiTypeProperties getTypeUiProperties() {
-		return m_uiProperties;
+		return uiProperties;
 	}
 
 	public String getName() {
-		if (m_classMeta != null) {
-			String s = m_classMeta.shortTypeName();
+		if (classMeta != null) {
+			String s = classMeta.shortTypeName();
 			if (s == null) {
 				return m_shortName;
 			}
@@ -403,14 +403,14 @@ public class Type implements TypeIntf {
 	}
 
 	public int getSchemaVersion() {
-		if (m_classMeta != null) {
-			return m_classMeta.schemaVersion();
+		if (classMeta != null) {
+			return classMeta.schemaVersion();
 		}
 		return -1;
 	}
 
 	public void voidCache() {
-		m_typeFields = null;
+		typeFields = null;
 	}
 
 	public void addTypeField(TypeFieldIntf tf) {
@@ -438,7 +438,7 @@ public class Type implements TypeIntf {
 
 	public void initFromPropsRead(TypeManager tm, Class c, String shortName, Type superType) {
 		isBag = true;
-		this.m_implementationClass = c;
+		this.implementationClass = c;
 		this.m_shortName = shortName;
 		this.m_superType = superType;
 	}
@@ -449,7 +449,7 @@ public class Type implements TypeIntf {
 			return;
 		}
 		// computeFromSubjectArea the super type
-		m_superType = tm.getTypeForClass(m_implementationClass.getSuperclass());
+		m_superType = tm.getTypeForClass(implementationClass.getSuperclass());
 	}
 
 	/**
@@ -485,7 +485,7 @@ public class Type implements TypeIntf {
 	 */
 	public TypeFieldIntf[] getTypeFields() {
 
-		if (m_typeFields == null) {
+		if (typeFields == null) {
 			// rebuild the cache
 			TypeFieldIntf[] temp = null;
 			int index = 0;
@@ -504,10 +504,10 @@ public class Type implements TypeIntf {
 			for (TypeFieldIntf tf : m_myTypeFields.values()) {
 				temp[index++] = tf;
 			}
-			m_typeFields = temp;
+			typeFields = temp;
 
 		}
-		return m_typeFields;
+		return typeFields;
 	}
 
 	/**
@@ -539,7 +539,7 @@ public class Type implements TypeIntf {
 	}
 
 	public boolean isInstanceOf(HTSerializable pts) {
-		return m_implementationClass.isInstance(pts);
+		return implementationClass.isInstance(pts);
 	}
 
 	private void extractClassLevelAnnotation(TypeManager manager, ClassAnnotations classAnnotations) {
@@ -561,26 +561,26 @@ public class Type implements TypeIntf {
 			}
 			// handle the UiTypeProperties
 			else if (aClass.equals(uiClass)) {
-				m_uiProperties = (UiTypeProperties) a;
+				uiProperties = (UiTypeProperties) a;
 				// views are pulled out in the initViews method
 			}
 		}
 	}
 
 	private void extractTypeClassMetaInfo(Annotation a, TypeManager manager) {
-		m_classMeta = (TypeClassMetaInfo) a;
-		Class vsClass = m_classMeta.valueSourceClass();
+		classMeta = (TypeClassMetaInfo) a;
+		Class vsClass = classMeta.valueSourceClass();
 		// load value source
-		m_valueSource = (ValueSourceForClass) ClassUtil.getInstanceSwallowError(vsClass, ValueSourceForClass.class);
-		if (m_valueSource != null) {
-			m_valueSource.setType(this);
+		valueSource = (ValueSourceForClass) ClassUtil.getInstanceSwallowError(vsClass, ValueSourceForClass.class);
+		if (valueSource != null) {
+			valueSource.setType(this);
 		}
-		String l = m_classMeta.softLinkField();
+		String l = classMeta.softLinkField();
 		if (l != null) {
-			m_softLinkFields = StringUtil.tokenizeFromSingleChar(l, ":");
+			softLinkFields = StringUtil.tokenizeFromSingleChar(l, ":");
 		}
 		// and read the internal trigger annotation
-		ImplClassMeta[] impls = m_classMeta.onTriggers();
+		ImplClassMeta[] impls = classMeta.onTriggers();
 		for (ImplClassMeta impl : impls) {
 			Object o = ClassUtil.getInstanceSwallowError(impl.className(), OnTrigger.class);
 			if (o != null) {
@@ -591,7 +591,7 @@ public class Type implements TypeIntf {
 			}
 		}
 
-		AdapterClassMeta[] adapters = m_classMeta.adapters();
+		AdapterClassMeta[] adapters = classMeta.adapters();
 		for (AdapterClassMeta cm : adapters) {
 			String group = cm.adapterGroup();
 			Class clazz = cm.className();
@@ -603,7 +603,7 @@ public class Type implements TypeIntf {
 			}
 		}
 
-		Class guidAcc = m_classMeta.guidAccessor();
+		Class guidAcc = classMeta.guidAccessor();
 		if (guidAcc != null) {
 			if (guidAcc == Object.class) {
 				guidAcc = TypeManager.getTypeManager().getDefaultAccessor();
@@ -613,16 +613,16 @@ public class Type implements TypeIntf {
 			}
 			try {
 				m_guidAccessor = (Accessor) guidAcc.newInstance();
-				m_guidAccessor.init(manager, this, this.m_softLinkFields);
+				m_guidAccessor.init(manager, this, this.softLinkFields);
 			} catch (InstantiationException e) {
 				Log.typemanager.fatal("Unable to initialize guidAccessor %s for type %s %s %e",
 						guidAcc.getCanonicalName(),
-						this.m_implementationClass.getCanonicalName(),
+						this.implementationClass.getCanonicalName(),
 						e, e);
 			} catch (IllegalAccessException e) {
 				Log.typemanager.fatal("Unable to initialize guidAccessor %s for type %s %s %e",
 						guidAcc.getCanonicalName(),
-						this.m_implementationClass.getCanonicalName(),
+						this.implementationClass.getCanonicalName(),
 						e, e);
 			}
 

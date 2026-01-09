@@ -45,10 +45,10 @@ import java.util.Vector;
  * @version 0.9
  */
 public class XmlRpcPing {
-	private String m_postName;
-	private String m_postURI;
-	private String m_pingClient;
-	private String m_pingMethod;
+	private String postName;
+	private String postURI;
+	private String pingClient;
+	private String pingMethod;
 
 	public XmlRpcPing() {
 		super();
@@ -68,13 +68,13 @@ public class XmlRpcPing {
 	 */
 	public boolean doPing(String name, String URI, String client, String method) {
 		try {
-			m_postName = name;
-			m_postURI = URI;
-			m_pingClient = client;
-			m_pingMethod = method;
+			postName = name;
+			postURI = URI;
+			pingClient = client;
+			pingMethod = method;
 
 			XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-			config.setServerURL(new URL(m_pingClient));
+			config.setServerURL(new URL(pingClient));
 			config.setEnabledForExtensions(true);
 			config.setConnectionTimeout(60 * 1000);
 			config.setReplyTimeout(60 * 1000);
@@ -85,16 +85,16 @@ public class XmlRpcPing {
 			xmlrpc.setTransportFactory(
 					new XmlRpcCommonsTransportFactory(xmlrpc));
 			final Vector params = new Vector();
-			params.addElement(this.m_postName);
-			params.addElement(this.m_postURI);
-			final Object result = xmlrpc.execute(this.m_pingMethod, params);
+			params.addElement(this.postName);
+			params.addElement(this.postURI);
+			final Object result = xmlrpc.execute(this.pingMethod, params);
 
 			return (result != null);
 
 		} catch (XmlRpcException ex) {
-			Log.util.error("Error pinging server %s %s %e", m_pingClient, ex, ex);
+			Log.util.error("Error pinging server %s %s %e", pingClient, ex, ex);
 		} catch (MalformedURLException e) {
-			Log.util.error("Error pinging server %s %s %e", m_pingClient, e, e);
+			Log.util.error("Error pinging server %s %s %e", pingClient, e, e);
 		}
 		return false;
 

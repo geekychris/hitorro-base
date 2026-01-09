@@ -85,9 +85,9 @@ public final class ServletService {
 	HandlerCollection handlerCollection = null;
 	private int portNumber;
 	private Map<String, ServletContextHandler> _contextMap = null;
-	private final ActionServlet m_actionServletExternal = new ActionServlet(false);
-	private final ActionServlet m_actionServletInternal = new ActionServlet(true);
-	private final IterCommandServlet m_iterCommandServlet = new IterCommandServlet();
+	private final ActionServlet actionServletExternal = new ActionServlet(false);
+	private final ActionServlet actionServletInternal = new ActionServlet(true);
+	private final IterCommandServlet iterCommandServlet = new IterCommandServlet();
 
 	public static ServletService getService() {
 		return service;
@@ -195,11 +195,11 @@ public final class ServletService {
 		addInternalServlet(new TestServlet(), "/test/*");
 		addInternalServlet(new CounterSetServlet(), "/counters/*");
 
-		addExternalServlet(m_actionServletExternal, "/action/*");
-		addInternalServlet(m_actionServletInternal, "/action/*");
+		addExternalServlet(actionServletExternal, "/action/*");
+		addInternalServlet(actionServletInternal, "/action/*");
 
-		addInternalServlet(m_iterCommandServlet, "/iteraction/*");
-		addExternalServlet(m_iterCommandServlet, "/iteraction/*");
+		addInternalServlet(iterCommandServlet, "/iteraction/*");
+		addExternalServlet(iterCommandServlet, "/iteraction/*");
 	}
 
 	/**

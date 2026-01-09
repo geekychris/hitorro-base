@@ -41,7 +41,7 @@ import java.util.Map;
 		dependentServiceInterfaces = {})
 public class AuthenticationService implements Auditable {
 	private static AuthenticationService s_service = null;
- 	private final List<AuthenticationMethod> m_defaultList = new ArrayList<AuthenticationMethod>();
+ 	private final List<AuthenticationMethod> defaultList = new ArrayList<AuthenticationMethod>();
 	private final Map<String, AuthenticationMethod> m_methods = new HashMap<String, AuthenticationMethod>();
 
 	public static final AuthenticationService getService() {
@@ -51,7 +51,7 @@ public class AuthenticationService implements Auditable {
 
 	public void registerAuthMethod(AuthenticationMethod method, boolean partOfDefaultSearchList) {
 		m_methods.put(method.getAuthenticationMethod().toLowerCase(), method);
-		m_defaultList.add(method);
+		defaultList.add(method);
 	}
 
 	public AuthResponse changeUserPasswordSU(String userId, String password) {
@@ -64,7 +64,7 @@ public class AuthenticationService implements Auditable {
 			return method.authenticate(parts[1], password);
 		}
 		AuthResponse resp = null;
-		for (AuthenticationMethod method : m_defaultList) {
+		for (AuthenticationMethod method : defaultList) {
 			if (method.canSetPassord()) {
 				resp = method.changePasswordSU(userId, password);
 				switch (resp.getState()) {
@@ -88,7 +88,7 @@ public class AuthenticationService implements Auditable {
 			return method.authenticate(parts[1], password);
 		}
 		AuthResponse resp = null;
-		for (AuthenticationMethod method : m_defaultList) {
+		for (AuthenticationMethod method : defaultList) {
 			if (method.canSetPassord()) {
 				resp = method.changePassword(userId, password, newPassword);
 				switch (resp.getState()) {
@@ -122,7 +122,7 @@ public class AuthenticationService implements Auditable {
 			return method.authenticate(parts[1], password);
 		}
 		AuthResponse resp = null;
-		for (AuthenticationMethod method : m_defaultList) {
+		for (AuthenticationMethod method : defaultList) {
 			resp = method.authenticate(userId, password);
 			switch (resp.getState()) {
 				case Valid:

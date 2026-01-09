@@ -41,8 +41,8 @@ public class TypeClassMetaInfoImpl implements TypeClassMetaInfo {
 	public static final BooleanProperty isDynamicKey = new BooleanProperty("isdynamic", "", false);
 	public static final BooleanProperty isDisableFastAccessorsKey = new BooleanProperty("isableFastAccessors", "", false);
 	private String m_shortTypeName;
-	private ImplClassMeta[] m_classMeta;
-	private AdapterClassMeta[] m_adapterClassMeta;
+	private ImplClassMeta[] classMeta;
+	private AdapterClassMeta[] adapterClassMeta;
 	private int m_schemaVersion;
 	private boolean m_isPersisted;
 	private boolean m_isView;
@@ -124,11 +124,11 @@ public class TypeClassMetaInfoImpl implements TypeClassMetaInfo {
 	 * @return Triggers registered with this class.
 	 */
 	public ImplClassMeta[] onTriggers() {
-		return m_classMeta;
+		return classMeta;
 	}
 
 	public void setOnTriggers(ImplClassMeta[] classMeta) {
-		m_classMeta = classMeta;
+		this.classMeta = classMeta;
 	}
 
 	/**
@@ -137,11 +137,11 @@ public class TypeClassMetaInfoImpl implements TypeClassMetaInfo {
 	 * @return Adapters associated with this class.
 	 */
 	public AdapterClassMeta[] adapters() {
-		return m_adapterClassMeta;
+		return adapterClassMeta;
 	}
 
 	public void setAdapters(AdapterClassMeta[] adapterClassMeta) {
-		m_adapterClassMeta = adapterClassMeta;
+		this.adapterClassMeta = adapterClassMeta;
 	}
 
 	/**

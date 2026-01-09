@@ -75,17 +75,17 @@ public class RPCService {
 	public static RPCService s_service;
 	private static final Map<String, RPCHandler> s_syncHandlers = new HashMap<String, RPCHandler>();
 	private static final int RestartCount = 10;
-	private RPCListenDatagram m_rpcDatagramListener;
-	private RPCListenDatagram m_rpcMCLocalDatagramListener;
-	private RPCListenDatagram m_rpcMCGlobalDatagramListener;
+	private RPCListenDatagram rpcDatagramListener;
+	private RPCListenDatagram rpcMCLocalDatagramListener;
+	private RPCListenDatagram rpcMCGlobalDatagramListener;
 	// group
-	private String m_localGroupAddress;
-	private final String m_globalGroupAddress = ClusterAddress.apply();
-	private final int m_localGroupPort = 7000;
-	private final int m_globalGroupPort = 7001;
-	private RPCListener m_rpcListener;
-	private final String m_clusterName = ClusterName.apply();
-	private long m_sequenceNumber = 0;
+	private String localGroupAddress;
+	private final String globalGroupAddress = ClusterAddress.apply();
+	private final int localGroupPort = 7000;
+	private final int globalGroupPort = 7001;
+	private RPCListener rpcListener;
+	private final String clusterName = ClusterName.apply();
+	private long sequenceNumber = 0;
 	private final Object m_lock = new Object();
 
 	public static RPCService getService() {
@@ -106,20 +106,20 @@ public class RPCService {
 	 */
 	public long getSequenceNumber() {
 		synchronized (m_lock) {
-			return m_sequenceNumber++;
+			return sequenceNumber++;
 		}
 	}
 
 	public String getClusterName() {
-		return m_clusterName;
+		return clusterName;
 	}
 
 	public RPCListener getRPCListener() {
-		return m_rpcListener;
+		return rpcListener;
 	}
 
 	public RPCListenDatagram getRPCDatagramListener() {
-		return m_rpcDatagramListener;
+		return rpcDatagramListener;
 	}
 
 	public RPCHandler getHandler(String method) {
@@ -157,9 +157,9 @@ public class RPCService {
 			}
 		}
 		RPCMessage msg = new RPCMessage();
-		msg.setEndPoints(m_rpcListener.getListeningIp(), m_rpcListener.getListeningPort(), targetIp, targetPort,
+		msg.setEndPoints(rpcListener.getListeningIp(), rpcListener.getListeningPort(), targetIp, targetPort,
 				rpcMethod, sync);
-		msg.setClusterName(m_clusterName);
+		msg.setClusterName(clusterName);
 		return msg;
 	}
 
@@ -170,7 +170,7 @@ public class RPCService {
 	 * @return
 	 */
 	public RPCMessage getLocalBroadcastMessageToSend(String rpcMethod) {
-		return getMessageToSend(m_localGroupAddress, this.m_localGroupPort, rpcMethod, false);
+		return getMessageToSend(localGroupAddress, this.localGroupPort, rpcMethod, false);
 	}
 
 	/**
@@ -180,17 +180,17 @@ public class RPCService {
 	 * @return
 	 */
 	public RPCMessage getGlobalBroadcastMessageToSend(String rpcMethod) {
-		return getMessageToSend(m_globalGroupAddress, m_globalGroupPort, rpcMethod, false);
+		return getMessageToSend(globalGroupAddress, globalGroupPort, rpcMethod, false);
 	}
 
 	public String deInit() {
 
 		s_service = null;
-		if (m_rpcDatagramListener != null) {
-			this.m_rpcDatagramListener.stop();
+		if (rpcDatagramListener != null) {
+			this.rpcDatagramListener.stop();
 		}
-		this.m_rpcDatagramListener = null;
-		this.m_rpcListener = null;
+		this.rpcDatagramListener = null;
+		this.rpcListener = null;
 		return null;
 	}
 
@@ -215,37 +215,37 @@ public class RPCService {
 
 	private void addPortsForCluster() {
 		IDef id = ClusterService.getThisInstanceDefinition();
-		String ip = m_rpcListener.getListeningIp();
-		id.addPortMap(ClusterService.RPCTCPPortKey, ip, m_rpcListener.getListeningPort());
+		String ip = rpcListener.getListeningIp();
+		id.addPortMap(ClusterService.RPCTCPPortKey, ip, rpcListener.getListeningPort());
 
-		id.addPortMap(ClusterService.RPCUDPPortKey, ip, m_rpcDatagramListener.getListeningPort());
+		id.addPortMap(ClusterService.RPCUDPPortKey, ip, rpcDatagramListener.getListeningPort());
 
-		if (m_rpcMCLocalDatagramListener != null) {
-			id.addPortMap(ClusterService.RPCUDPLocalMulticastPortKey, m_rpcMCLocalDatagramListener.getListeningIp(), m_rpcMCLocalDatagramListener.getListeningPort());
+		if (rpcMCLocalDatagramListener != null) {
+			id.addPortMap(ClusterService.RPCUDPLocalMulticastPortKey, rpcMCLocalDatagramListener.getListeningIp(), rpcMCLocalDatagramListener.getListeningPort());
 		}
-		if (m_rpcMCGlobalDatagramListener != null) {
-			id.addPortMap(ClusterService.RPCUDPGlobalMulticastPortKey, m_rpcMCGlobalDatagramListener.getListeningIp(), m_rpcMCGlobalDatagramListener.getListeningPort());
+		if (rpcMCGlobalDatagramListener != null) {
+			id.addPortMap(ClusterService.RPCUDPGlobalMulticastPortKey, rpcMCGlobalDatagramListener.getListeningIp(), rpcMCGlobalDatagramListener.getListeningPort());
 
-			id.addPortMap(ClusterService.TelnetPortKey, m_rpcMCGlobalDatagramListener.getListeningIp(), TerminalListener.PortNumber.apply());
+			id.addPortMap(ClusterService.TelnetPortKey, rpcMCGlobalDatagramListener.getListeningIp(), TerminalListener.PortNumber.apply());
 		}
 	}
 
 	private void createListeners() {
 		boolean enableMultigram = EnableMultigram.apply();
 
-		m_rpcListener = new RPCListener(this, PortNumber.apply());
-		addRunnable(m_rpcListener, "RPC Listener");
+		rpcListener = new RPCListener(this, PortNumber.apply());
+		addRunnable(rpcListener, "RPC Listener");
 
 
-		m_rpcDatagramListener = new RPCListenDatagram(this, PortNumber.apply(), "RPC Datagram Listener");
-		addRunnable(m_rpcDatagramListener, "RPC Datagram Listener");
+		rpcDatagramListener = new RPCListenDatagram(this, PortNumber.apply(), "RPC Datagram Listener");
+		addRunnable(rpcDatagramListener, "RPC Datagram Listener");
 
 
 		if (enableMultigram) {
 			String myIpf = Env.getHostIP();
 			if (StringUtil.nullOrEmptyString(myIpf)) {
 				Log.rpc.error("Unable to register local multicast datagram as the ip address of this host was not retrievable");
-				m_localGroupAddress = "NOTSET";
+				localGroupAddress = "NOTSET";
 			} else {
 				//  address has to be between 224.0.0.0 to 239.255.255.255 and therefor we steel this hosts ip address and morph it.
 				// that way we can have a group address just for things on this box.
@@ -256,16 +256,16 @@ public class RPCService {
 				} else {
 					firstPart = firstPart.substring(1);
 				}
-				m_localGroupAddress = Fmt.S("23%s.%s", firstPart, parts[1]);
-				m_rpcMCLocalDatagramListener = new RPCListenDatagram(this, true, m_localGroupAddress,
-						m_localGroupPort, "RPC Datagram Local MultiCast");
-				addRunnable(m_rpcMCLocalDatagramListener, "RPC Datagram Local MultiCast");
+				localGroupAddress = Fmt.S("23%s.%s", firstPart, parts[1]);
+				rpcMCLocalDatagramListener = new RPCListenDatagram(this, true, localGroupAddress,
+						localGroupPort, "RPC Datagram Local MultiCast");
+				addRunnable(rpcMCLocalDatagramListener, "RPC Datagram Local MultiCast");
 			}
 
 
-			m_rpcMCGlobalDatagramListener = new RPCListenDatagram(this, true, this.m_globalGroupAddress,
-					m_globalGroupPort, "RPC Datagram Global MultiCast");
-			addRunnable(m_rpcMCGlobalDatagramListener, "RPC Datagram Global MultiCast");
+			rpcMCGlobalDatagramListener = new RPCListenDatagram(this, true, this.globalGroupAddress,
+					globalGroupPort, "RPC Datagram Global MultiCast");
+			addRunnable(rpcMCGlobalDatagramListener, "RPC Datagram Global MultiCast");
 		}
 	}
 

@@ -42,17 +42,17 @@ import java.util.List;
 public class TypeField implements TypeFieldIntf {
 
 	private String m_fieldName = null;
-	private Type m_definedIn = null;
+	private Type definedIn = null;
 	private Method m_getter = null;
 	private Method m_setter = null;
 	private List<Annotation> m_annos;
 	private Class m_fieldType = null;
 
-	private DBSearchableAttributeMetaInfo m_dbSearchableMeta = null;
-	private FullTextAttributeMetaInfo m_fullTextMeta = null;
-	private UiProperties m_uiProperties = null;
+	private DBSearchableAttributeMetaInfo dbSearchableMeta = null;
+	private FullTextAttributeMetaInfo fullTextMeta = null;
+	private UiProperties uiProperties = null;
 
-	private final ValueSourceField m_vsf = null;
+	private final ValueSourceField vsf = null;
 	private ValueMapMapper valueMapMapper = null;
 
 	private BaseMapper storedFieldMapper;
@@ -154,10 +154,10 @@ public class TypeField implements TypeFieldIntf {
 		clone.m_annos = m_annos;
 		clone.m_fieldType = m_fieldType;
 		clone.tfdt = tfdt;
-		clone.m_fullTextMeta = m_fullTextMeta;
-		clone.m_uiProperties = m_uiProperties;
-		clone.m_dbSearchableMeta = m_dbSearchableMeta;
-		clone.m_definedIn = m_definedIn;
+		clone.fullTextMeta = fullTextMeta;
+		clone.uiProperties = uiProperties;
+		clone.dbSearchableMeta = dbSearchableMeta;
+		clone.definedIn = definedIn;
 		return clone;
 	}
 
@@ -167,14 +167,14 @@ public class TypeField implements TypeFieldIntf {
 
 	public Object getValue(Object obj) {
 		if ((obj == null || m_getter == null)) {
-			if (this.m_definedIn.isBag()) {
+			if (this.definedIn.isBag()) {
 
 				return ((Bag) obj).getValue(obj, m_fieldName);
 			}
 			return null;
 		}
-		if (m_vsf != null) {
-			return m_vsf.getValue(obj);
+		if (vsf != null) {
+			return vsf.getValue(obj);
 		}
 
 		try {
@@ -193,8 +193,8 @@ public class TypeField implements TypeFieldIntf {
 		if (obj == null || m_setter == null) {
 			return;
 		}
-		if (m_vsf != null) {
-			m_vsf.setValue(obj, value);
+		if (vsf != null) {
+			vsf.setValue(obj, value);
 			return;
 		}
 		try {
@@ -208,7 +208,7 @@ public class TypeField implements TypeFieldIntf {
 	}
 
 	public Analyzer getIndexingAnalyzer(IsoLanguage language) {
-		String indexingFilter = m_fullTextMeta.luceneIndexingFilters();
+		String indexingFilter = fullTextMeta.luceneIndexingFilters();
 		if (StringUtil.nullOrEmptyOrBlankString(indexingFilter)) {
 			indexingFilter = GenericAnalyzerBase.Standard.apply();
 		}
@@ -224,7 +224,7 @@ public class TypeField implements TypeFieldIntf {
 
 	public Analyzer getSearchAnalyzer(IsoLanguage language) {
 
-		String searchFilter = m_fullTextMeta.luceneSearchingFilters();
+		String searchFilter = fullTextMeta.luceneSearchingFilters();
 		if (StringUtil.nullOrEmptyOrBlankString(searchFilter)) {
 			searchFilter = GenericAnalyzerBase.Standard.apply();
 		}
@@ -239,45 +239,45 @@ public class TypeField implements TypeFieldIntf {
 	}
 
 	public DBSearchableAttributeMetaInfo getDbSearchableMeta() {
-		return m_dbSearchableMeta;
+		return dbSearchableMeta;
 	}
 
 	public void setDbSearchableMeta(DBSearchableAttributeMetaInfo meta) {
 		if (meta == null) {
 			return;
 		}
-		m_dbSearchableMeta = meta;
+		dbSearchableMeta = meta;
 	}
 
 	public FullTextAttributeMetaInfo getFullTextMeta() {
-		return m_fullTextMeta;
+		return fullTextMeta;
 	}
 
 	public void setFullTextMeta(FullTextAttributeMetaInfo meta) {
 		if (meta == null) {
 			return;
 		}
-		m_fullTextMeta = meta;
+		fullTextMeta = meta;
 	}
 
 	public UiProperties getUiProperties() {
-		return m_uiProperties;
+		return uiProperties;
 	}
 
 	public void setUiProperties(UiProperties prop) {
 		if (prop == null) {
 			return;
 		}
-		m_uiProperties = prop;
+		uiProperties = prop;
 	}
 
 	private void addAnnos(TypeField tf,
 						  FullTextAttributeMetaInfo ft,
 						  DBSearchableAttributeMetaInfo db,
 						  UiProperties uiprops) {
-		tf.m_fullTextMeta = ft;
-		tf.m_dbSearchableMeta = db;
-		tf.m_uiProperties = uiprops;
+		tf.fullTextMeta = ft;
+		tf.dbSearchableMeta = db;
+		tf.uiProperties = uiprops;
 	}
 
 	private void extractFieldLevelAnnotation(TypeField tf) {
@@ -289,16 +289,16 @@ public class TypeField implements TypeFieldIntf {
 			}
 			aClass = interfaces[0];
 			if (aClass.equals(FullTextAttributeMetaInfo.class)) {
-				tf.m_fullTextMeta = (FullTextAttributeMetaInfo) a;
+				tf.fullTextMeta = (FullTextAttributeMetaInfo) a;
 			} else if (aClass.equals(DBSearchableAttributeMetaInfo.class)) {
-				tf.m_dbSearchableMeta = (DBSearchableAttributeMetaInfo) a;
+				tf.dbSearchableMeta = (DBSearchableAttributeMetaInfo) a;
 			} else if (aClass.equals(UiProperties.class)) {
-				tf.m_uiProperties = (UiProperties) a;
+				tf.uiProperties = (UiProperties) a;
 			}
 		}
 	}
 
 	public TypeIntf getDefinedIn() {
-		return m_definedIn;
+		return definedIn;
 	}
 }

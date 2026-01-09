@@ -37,7 +37,7 @@ import java.util.Date;
 public class ObjectVersions extends BaseType {
 	public static final int SerializationVersion = 1;
 	private int m_version;
-	private long m_objectVersion;
+	private long objectVersion;
 	private String m_name;
 	private Date m_lastModified = new Date();
 
@@ -66,11 +66,11 @@ public class ObjectVersions extends BaseType {
 	}
 
 	public long getObjectVersion() {
-		return m_objectVersion;
+		return objectVersion;
 	}
 
 	public void setObjectVersion(long val) {
-		m_objectVersion = val;
+		objectVersion = val;
 	}
 
 	public void serialize(HTObjectOutputStream os)
@@ -87,14 +87,14 @@ public class ObjectVersions extends BaseType {
 		super.deserialize(os);
 		switch (version) {
 			case 1:
-				m_objectVersion = os.readLong();
+				objectVersion = os.readLong();
 				m_name = os.readString();
 				m_lastModified = os.readDate();
 		}
 	}
 
 	/*
-		private long m_objectVersion;
+		private long objectVersion;
 	private int    m_version;
 	private String m_name;
 	private Date m_lastModified = new Date();

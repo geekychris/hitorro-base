@@ -42,16 +42,16 @@ public class SimpleRPCDatagramListener implements Runnable {
 	private final boolean m_incrementPortIfUnavailable = true;
 	private boolean m_initialized = false;
 	private RPCService m_service;
-	private DatagramSocket m_datagramSocket;
+	private DatagramSocket datagramSocket;
 	private Socket m_socket;
-	private boolean m_multiCastListening;
-	private String m_multiCastGroupAddress;
+	private boolean multiCastListening;
+	private String multiCastGroupAddress;
 	private String m_name;
 
-	private MulticastSocket m_multicastDatagramSocket = null;
+	private MulticastSocket multicastDatagramSocket = null;
 	private InetAddress m_ia;
 
-	private boolean m_keepRunning = true;
+	private boolean keepRunning = true;
 
 	public SimpleRPCDatagramListener(RPCService service, int port, String name) {
 		init(service, false, port, null, name);
@@ -63,20 +63,20 @@ public class SimpleRPCDatagramListener implements Runnable {
 	}
 
 	public void stop() {
-		m_keepRunning = false;
+		keepRunning = false;
 	}
 
 	private void init(RPCService service, boolean multiCastListening, int port, String multiCastGroupAddress, String name) {
 		m_Command_registry = CommandRegistry.getRegistry();
 		m_service = service;
-		m_multiCastListening = multiCastListening;
+		this.multiCastListening = multiCastListening;
 		m_portNumber = port;
-		m_multiCastGroupAddress = multiCastGroupAddress;
+		this.multiCastGroupAddress = multiCastGroupAddress;
 		m_name = name;
 	}
 
 	public DatagramSocket getDatagramSocket() {
-		return m_datagramSocket;
+		return datagramSocket;
 	}
 
 	public int listenDatagram() {
@@ -87,11 +87,11 @@ public class SimpleRPCDatagramListener implements Runnable {
 			}
 		}
 
-		while (m_keepRunning) {
+		while (keepRunning) {
 			try {
 				byte[] buff = new byte[BufferSize];
 				DatagramPacket packet = new DatagramPacket(buff, buff.length);
-				m_datagramSocket.receive(packet);
+				datagramSocket.receive(packet);
 				Console.println("Received %s", packet.getData());
 				//m_listener.s_exec.execute(session);
 			} catch (SocketException e) {
@@ -102,16 +102,16 @@ public class SimpleRPCDatagramListener implements Runnable {
 
 
 		}
-		if (this.m_multiCastListening) {
+		if (this.multiCastListening) {
 			try {
-				m_multicastDatagramSocket.leaveGroup(m_ia);
-				m_multicastDatagramSocket.close();
+				multicastDatagramSocket.leaveGroup(m_ia);
+				multicastDatagramSocket.close();
 			} catch (IOException e) {
 				Log.util.error("Unable to leave multicast group (%s) port: %s% address: %s %e",
-						m_name, m_portNumber, m_multiCastGroupAddress, e, e);
+						m_name, m_portNumber, multiCastGroupAddress, e, e);
 			}
 		} else {
-			m_datagramSocket.close();
+			datagramSocket.close();
 		}
 		return -1;
 	}
@@ -120,23 +120,23 @@ public class SimpleRPCDatagramListener implements Runnable {
 		// if we are restarted by the restartable daemon we dont want to go through this again
 		m_initialized = true;
 		try {
-			if (this.m_multiCastListening) {
-				m_multicastDatagramSocket = new MulticastSocket(m_portNumber);
+			if (this.multiCastListening) {
+				multicastDatagramSocket = new MulticastSocket(m_portNumber);
 				// set the address reuse option
-				m_multicastDatagramSocket.setReuseAddress(true); // Java 1.4 and higher
+				multicastDatagramSocket.setReuseAddress(true); // Java 1.4 and higher
 
 				// join the multicast group
-				m_ia = InetAddress.getByName(m_multiCastGroupAddress);
+				m_ia = InetAddress.getByName(multiCastGroupAddress);
 				if (!m_ia.isMulticastAddress()) {
 					Log.rpc.info("%s receive on port %s address %s is not a group address ",
-							m_name, m_portNumber, m_multiCastGroupAddress);
+							m_name, m_portNumber, multiCastGroupAddress);
 					return true;
 				}
-				m_multicastDatagramSocket.joinGroup(m_ia);
+				multicastDatagramSocket.joinGroup(m_ia);
 				// for purposes of the receive loop
-				m_datagramSocket = m_multicastDatagramSocket;
+				datagramSocket = multicastDatagramSocket;
 			} else {
-				m_datagramSocket = new DatagramSocket(m_portNumber);
+				datagramSocket = new DatagramSocket(m_portNumber);
 			}
 
 			Log.rpc.info("%s listening on %s", m_name, m_portNumber);
