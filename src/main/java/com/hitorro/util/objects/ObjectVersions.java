@@ -27,18 +27,30 @@ import com.hitorro.util.typesystem.HTObjectInputStream;
 import com.hitorro.util.typesystem.HTObjectOutputStream;
 import com.hitorro.util.typesystem.annotation.TypeClassMetaInfo;
 
+import jakarta.persistence.*;
 import java.io.IOException;
 import java.util.Date;
 
+@Entity
+@Table(name = "ObjectVersions")
 @TypeClassMetaInfo(shortTypeName = TypeClassMetaInfo.ObjectVersions,
 		isView = false,
 		isPersisted = true,
 		schemaVersion = ObjectVersions.SerializationVersion)
 public class ObjectVersions extends BaseType {
 	public static final int SerializationVersion = 1;
+	
+	@Column(name = "m_version")
 	private int m_version;
+	
+	@Column(name = "objectVersion")
 	private long objectVersion;
+	
+	@Column(name = "m_name")
 	private String m_name;
+	
+	@Column(name = "m_lastModified")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date m_lastModified = new Date();
 
 	public String getName() {
