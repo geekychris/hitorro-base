@@ -106,8 +106,17 @@ public class FileSetManager {
 
 	public String init(boolean dbInit, final boolean upgrading, final long currentVersion, final long targetVersion) {
 		try {
+			// Check if configuration exists before attempting to load
+			JsonNode config = JVSProperties.getProperties().get("filesetmanagement.default");
+			if (config == null) {
+				// FileSetManager configuration not present - skip initialization (optional for Spring Boot)
+				return null;
+			}
 			addPath("filesetmanagement.default");
 		} catch (PropaccessError propaccessError) {
+			return null;
+		} catch (Exception e) {
+			// Gracefully handle any other initialization errors
 			return null;
 		}
 		return null;
