@@ -61,7 +61,7 @@ public class ClusterService implements ClusterServiceInterface, BaseCollectionCh
 	public static final String InstanceListChange = "instancelistchange";
 
 	public static final String SingletonString = "s:";
-	public static IDef me = new IDef().initLocal();
+	private static IDef me = null;
 	private static ClusterService s_service;
 	private String dbGroupSingletonName;
 	private final Object indexUpdateLock = new Object();
@@ -69,7 +69,25 @@ public class ClusterService implements ClusterServiceInterface, BaseCollectionCh
 
 	private final BaseCollection<String, JVS> cluster = new BaseCollection();
 
+	/**
+	 * Get this instance definition, lazily initialized to avoid type system dependency during static initialization.
+	 * This prevents NullPointerException when JsonTypeSystem is not yet initialized (e.g., in Docker containers).
+	 */
 	public static IDef getThisInstanceDefinition() {
+		if (me == null) {
+			synchronized (ClusterService.class) {
+				if (me == null) {
+					try {
+						me = new IDef().initLocal();
+						Log.util.info("ClusterService.getThisInstanceDefinition(): Initialized instance definition");
+					} catch (Exception e) {
+						Log.util.error("ClusterService.getThisInstanceDefinition(): Failed to initialize instance definition - " + e.getMessage(), e);
+						// Return a minimal IDef to prevent cascading failures
+						me = new IDef(); // Don't call initLocal() if it fails
+					}
+				}
+			}
+		}
 		return me;
 	}
 

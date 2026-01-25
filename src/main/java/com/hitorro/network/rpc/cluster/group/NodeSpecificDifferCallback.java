@@ -30,7 +30,7 @@ public class NodeSpecificDifferCallback implements NodeGroupDifferCallback {
 	private final String name;
 
 	public NodeSpecificDifferCallback() {
-		id = ClusterService.me.getInstanceStub();
+		id = ClusterService.getThisInstanceDefinition().getInstanceStub();
 		name = id.getString(IDef.serverIdKey);
 	}
 

@@ -72,12 +72,16 @@ public class IDef {
 	private JVS instanceStub = null;
 	private final boolean ownsSingleton = false;
 
+	/**
+	 * Constructor - does NOT automatically call initLocal() to avoid type system initialization dependencies.
+	 * Call initLocal() explicitly when type system is ready.
+	 */
 	public IDef() {
-		initLocal();
+		// Don't call initLocal() here - let it be called lazily to avoid type system dependency
 	}
 
 	public static boolean isLocal(JVS jvs) {
-		return ClusterService.me.getInstanceStub().getId().equals(jvs.getId());
+		return ClusterService.getThisInstanceDefinition().getInstanceStub().getId().equals(jvs.getId());
 	}
 
 	public static int getPortFor(JVS jvs, String protocol) {
@@ -148,8 +152,25 @@ public class IDef {
 			Long time = System.currentTimeMillis();
 
 			JVS is = new JVS();
-			is.setType(JsonTypeSystem.getMe().getType("cme"))
-					.set(serverIdKey, Env.getServerId())
+			
+			// Safely get the type system, handling case where it's not initialized yet
+			try {
+				JsonTypeSystem typeSystem = JsonTypeSystem.getMe();
+				if (typeSystem != null) {
+					com.hitorro.jsontypesystem.Type cmeType = typeSystem.getType("cme");
+					if (cmeType != null) {
+						is.setType(cmeType);
+					} else {
+						Log.util.info("IDef.getInstanceStub(): Type 'cme' not found in JsonTypeSystem, creating stub without type");
+					}
+				} else {
+					Log.util.info("IDef.getInstanceStub(): JsonTypeSystem not initialized yet, creating stub without type");
+				}
+			} catch (Exception e) {
+				Log.util.info("IDef.getInstanceStub(): Error accessing type system - " + e.getMessage() + ", creating stub without type");
+			}
+			
+			is.set(serverIdKey, Env.getServerId())
 					.set(realmIdKey, Env.getRealmId())
 					.set(ipAddressKey, Env.getHostIP())
 					.set(lastTouchedKey, time);
