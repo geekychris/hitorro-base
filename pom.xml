@@ -11,6 +11,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <hitorro.deploy.repo.path>${user.home}/code/hitorro-maven</hitorro.deploy.repo.path>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tapestry-release-version>5.4.3</tapestry-release-version>
     </properties>
@@ -154,4 +155,17 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+            <id>hitorro-local</id>
+            <name>Hitorro Local Maven Repository</name>
+            <url>file://${hitorro.deploy.repo.path}</url>
+        </repository>
+        <snapshotRepository>
+            <id>hitorro-local-snapshots</id>
+            <name>Hitorro Local Maven Snapshot Repository</name>
+            <url>file://${hitorro.deploy.repo.path}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
