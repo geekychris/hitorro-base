@@ -21,7 +21,7 @@
  */
 package com.hitorro.network.rpc.cluster;
 
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.util.commandandcontrol.Command;
 import com.hitorro.util.commandandcontrol.CommandSession;
 import com.hitorro.util.commandandcontrol.Response;
@@ -63,7 +63,7 @@ public class ClusterDebug extends Command {
 					@ColumnGroup(start = 8, size = 4, name = "capabilities")})
 	private final ResponseShape shape = new ResponseShape();
 
-	public boolean execute(String rawValue, JVS args, Response response, CommandSession session, RestOperations operation) throws Exception {
+	public boolean execute(String rawValue, JsonNode args, Response response, CommandSession session, RestOperations operation) throws Exception {
 		ClusterService cs = ClusterService.getService();
 		boolean all = All.apply(args);
 		boolean group = Group.apply(args);

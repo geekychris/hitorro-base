@@ -25,9 +25,7 @@ import com.hitorro.network.servlet.itercommands.SpewCommand;
 
 import java.util.HashMap;
 
-/**
- *
- */
+
 public class IterCommandContext {
 
 	private static final IterCommandContext context = new IterCommandContext();

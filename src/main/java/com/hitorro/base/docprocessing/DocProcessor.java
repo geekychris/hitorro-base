@@ -24,7 +24,6 @@ package com.hitorro.base.docprocessing;
 import com.hitorro.util.core.Log;
 import com.hitorro.util.core.iterator.queue.AbstractEnqueue;
 import com.hitorro.util.core.iterator.sinks.Sink;
-import com.hitorro.util.core.queue.QueueLengthCounterRegister;
 import com.hitorro.util.core.thread.farm.FarmCommand;
 import com.hitorro.util.core.thread.farm.FarmThreadWorkFlowCreator;
 import com.hitorro.util.servicecounters.CounterService;
@@ -43,7 +42,6 @@ public class DocProcessor<E, TDT> {
 	private final boolean addThreadNamesToCounters;
 
 	private final HashMap<String, AbstractEnqueue> queueMap = new HashMap();
-	private final List<QueueLengthCounterRegister> registers = new ArrayList();
 	private CounterSet counterSet;
 
 	private AbstractEnqueue<E> head;
@@ -88,8 +86,7 @@ public class DocProcessor<E, TDT> {
 		queueMap.put(inputQueueName, tq);
 
 		if (addThreadNamesToCounters) {
-			QueueLengthCounterRegister register = new QueueLengthCounterRegister(counterSet, inputQueueName, description, tq);
-			registers.add(register);
+			// QueueLengthCounterRegister removed during cleanup
 		}
 
 		return tq;
@@ -110,9 +107,7 @@ public class DocProcessor<E, TDT> {
 
 		AbstractEnqueue sink = flowCreator.getSinkQueue();
 		if (addThreadNamesToCounters && sink != null) {
-
-			QueueLengthCounterRegister register = new QueueLengthCounterRegister(counterSet, sinkQueueName, sinkDescription, sink);
-			registers.add(register);
+			// QueueLengthCounterRegister removed during cleanup
 		}
 		return head;
 	}

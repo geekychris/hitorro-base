@@ -21,8 +21,8 @@
  */
 package com.hitorro.base.docprocessing.commands;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.QueueLoaderBaseFileCrawlerCallback;
-import com.hitorro.jsontypesystem.JVS;
 import com.hitorro.util.basefile.fs.BaseFile;
 import com.hitorro.util.basefile.fs.BaseFileSystem;
 import com.hitorro.util.basefile.tools.crawler.BaseFileCrawler;
@@ -45,7 +45,7 @@ public class LoadDocsToQueue extends Command {
 	@CommandArgument(required = false)
 	public static final StringProperty BagtypeKey = new StringProperty("bagtype", "", "webpage");
 
-	public boolean execute(String rawValue, JVS args, Response response, CommandSession session) throws Exception {
+	public boolean execute(String rawValue, JsonNode args, Response response, CommandSession session) throws Exception {
 		String path = PathKey.apply(args);
 		String queue = QueueKey.apply(args);
 		String docType = BagtypeKey.apply(args);

@@ -63,7 +63,7 @@ public class ShutdownRPCHandler extends RPCHandler {
 
 		if (!StringUtil.nullOrEmptyOrBlankString(args)) {
 			try {
-				argsMap = CommandArgs.getParameters(args, true);
+				argsMap = new JVS(CommandArgs.getParameters(args, true));
 			} catch (ParseException | PropaccessError e) {
 				Log.rpc.error("Unable to parse arguments for shutdown %s %s %e", args, e, e);
 			}

@@ -37,8 +37,6 @@ import com.hitorro.util.core.events.LocalEventHub;
 import com.hitorro.util.core.string.Fmt;
 import com.hitorro.util.core.thread.RestartableServiceDaemon;
 import com.hitorro.util.io.FileUtil;
-import com.hitorro.util.io.resourcecache.basefile.BaseFileInstallResourceCacheCommand;
-import com.hitorro.util.io.resourcecache.file.InstallResourceCacheCommand;
 import com.hitorro.util.json.keys.FileProperty;
 import com.hitorro.util.servicecounters.CounterService;
 import com.hitorro.util.startupframework.CleanShutdownExitHandler;
@@ -67,7 +65,7 @@ import java.util.List;
 		UtilityService.class},
 		shortName = "basic",
 		description = "Basic service",
-		debugCommands = {InstallResourceCacheCommand.class, BaseFileInstallResourceCacheCommand.class, LoadDocsToQueue.class},
+		debugCommands = {LoadDocsToQueue.class},
 		debugCommandClasses = {Env.class, ServiceContext.class, CommandSession.class},
 		uiDirectories = {},
 		dbInitShellScripts = {"${HT_BIN}/data/initdb/commandscripts/basicservice.scr"})

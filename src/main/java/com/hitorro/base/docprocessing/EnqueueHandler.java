@@ -23,9 +23,7 @@ package com.hitorro.base.docprocessing;
 
 import java.util.List;
 
-/**
- *
- */
+
 public interface EnqueueHandler<E> {
 	String getName();
 

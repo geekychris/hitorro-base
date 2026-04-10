@@ -31,9 +31,7 @@ import org.xml.sax.SAXException;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- *
- */
+
 public enum OutputFormatEnum {
 	Json() {
 		public Response getResponse(final Command dc, final OutputStream os, int refreshPeriod) throws IOException {

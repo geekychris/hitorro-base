@@ -34,9 +34,7 @@ import com.hitorro.util.json.keys.IntegerProperty;
 
 import java.io.IOException;
 
-/**
- *
- */
+
 public class SpewCommand implements IterCommand {
 	private static final IntegerProperty DELAY_IN_SECS = new IntegerProperty("delaysecs", "", 10);
 

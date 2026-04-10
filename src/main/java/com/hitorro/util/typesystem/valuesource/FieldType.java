@@ -28,9 +28,7 @@ import org.objectweb.asm.Opcodes;
 import java.util.HashMap;
 import java.util.Set;
 
-/**
- *
- */
+
 public enum FieldType {
 	byteType(0, "byte", 1, Byte.class, "B", false, 2, 3, "java/lang/Byte", 3, Opcodes.ILOAD),
 	shortType(1, "short", 2, Short.class, "S", false, 2, 3, "java/lang/Short", 3, Opcodes.ILOAD),

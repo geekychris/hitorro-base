@@ -34,12 +34,11 @@ public class MonitorAlertUtil {
 					90);
 
 	public static void addLowDiskAlert() {
-		addLowDiskAlert(DevicePrefix.apply(), MinPercent.apply());
+		// DiskUsage/LowDiskSpaceValidator removed during cleanup
 	}
 
 	public static void addLowDiskAlert(String deviceStartsWith, int minPercent) {
-		MonitorService.addWatch(new LowDiskSpaceValidator(deviceStartsWith, minPercent),
-				new AlertMonitorAction(AlertNetEventHandler.AlertKey));
+		// DiskUsage/LowDiskSpaceValidator removed during cleanup
 	}
 
 

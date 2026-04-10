@@ -38,9 +38,7 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.Map;
 
-/**
- *
- */
+
 public class IterCommandServlet extends HttpServlet {
 	public IterCommandServlet() {
 		Log.util.info("hello");

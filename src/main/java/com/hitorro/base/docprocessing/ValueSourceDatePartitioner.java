@@ -30,9 +30,7 @@ import com.hitorro.util.typesystem.valuesource.ValueSourceForClass;
 
 import java.util.Date;
 
-/**
- *
- */
+
 public class ValueSourceDatePartitioner extends DateBasedWriterPartitioner<ValueSourceForClass> {
 	public static final StringProperty idField = new StringProperty("idfield", "", "id");
 	public static final StringProperty createField = new StringProperty("createField", "", "created");

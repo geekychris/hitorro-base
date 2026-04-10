@@ -24,9 +24,7 @@ package com.hitorro.util.basefile.tools.queue.writer.partitioners;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/**
- *
- */
+
 public class DoNothingPartitioner<E> implements WriterPartitioner<E> {
 	private E o;
 	private boolean isWithinRange = false;

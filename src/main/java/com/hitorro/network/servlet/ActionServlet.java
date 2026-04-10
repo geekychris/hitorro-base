@@ -128,8 +128,8 @@ public class ActionServlet extends HttpServlet {
 		try {
 			Map<String, String> p = ServletUtil.getArgs(params);
 			JVS jvs = JVSUtils.convertMapToJVS(p, new JVS());
-			int refresh = HtmlRefresh.apply(jvs);
-			OutputFormatEnum outputType = OutputType.apply(jvs);
+			int refresh = HtmlRefresh.apply(jvs.getJsonNode());
+			OutputFormatEnum outputType = OutputType.apply(jvs.getJsonNode());
 
 			Response resp = outputType.getResponse(dc, os, refresh);
 			resp.setHttpRequest(request);
@@ -139,7 +139,7 @@ public class ActionServlet extends HttpServlet {
 			//response.addHeader("Cache-Control", "s-maxage=120, public");
 
 			//response.setHeader("Expires", "-1");
-			long time = dc.executeRestfull("", jvs, resp, cs, op, is);
+			long time = dc.executeRestfull("", jvs.getJsonNode(), resp, cs, op, is);
 			resp.end();
 			os.flush();
 			return time;

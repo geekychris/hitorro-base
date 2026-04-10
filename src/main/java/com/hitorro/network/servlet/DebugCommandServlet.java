@@ -155,7 +155,7 @@ public final class DebugCommandServlet extends HttpServlet {
 			// and direct output to the servlet response
 			ServletResponse sresponse = new ServletResponse(response, columnWriters);
 			try {
-				dcommand.execute(null, args, sresponse, csession);
+				dcommand.execute(null, args.getJsonNode(), sresponse, csession);
 			} catch (Exception e) {
 				Console.println("Unable to execute command %s %e", e, e);
 			}

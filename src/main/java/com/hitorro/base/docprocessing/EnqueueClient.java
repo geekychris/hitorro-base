@@ -41,9 +41,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
 
-/**
- *
- */
+
 public class EnqueueClient<T extends HTSerializable> {
 	JVS id;
 	private final int retries = 1000;

@@ -28,9 +28,7 @@ import com.hitorro.util.core.iterator.mappers.BaseMapper;
 import com.hitorro.util.typesystem.HTSerializable;
 import com.hitorro.util.typesystem.HTSerializableUtil;
 
-/**
- *
- */
+
 public class BaseBaseFileUtil {
 	public static BaseMapper<BaseFile, AbstractIterator<? extends HTSerializable>> bf2htser = BaseFileUtil.bf2inputstream.combine(HTSerializableUtil.is2htser);
 }

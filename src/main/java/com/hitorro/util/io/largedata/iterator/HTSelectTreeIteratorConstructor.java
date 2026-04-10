@@ -29,9 +29,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 
-/**
- *
- */
+
 public class HTSelectTreeIteratorConstructor extends SelectTreeIteratorConstructor {
 	private final BaseSession session;
 

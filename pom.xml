@@ -29,17 +29,11 @@
             <version>3.0.1</version>
         </dependency>
 
-
+        <!-- JVS type system, projections, and NLP (provides OpenNLP, extJWNL, Lucene analysis transitively) -->
         <dependency>
-            <groupId>org.apache.opennlp</groupId>
-            <artifactId>opennlp-tools</artifactId>
-            <version>2.5.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.extjwnl</groupId>
-            <artifactId>extjwnl</artifactId>
-            <version>2.0.5</version>
+            <groupId>com.hitorro</groupId>
+            <artifactId>hitorro-jsontypesystem</artifactId>
+            <version>3.0.1</version>
         </dependency>
 
         <dependency>
@@ -56,13 +50,6 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
             <version>11.0.24</version>
-        </dependency>
-
-        <!-- Snowball Stemmer -->
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analysis-common</artifactId>
-            <version>9.12.0</version>
         </dependency>
 
         <!-- ASM -->

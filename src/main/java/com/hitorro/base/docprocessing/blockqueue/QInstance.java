@@ -55,9 +55,7 @@ import com.hitorro.util.typesystem.BaseSessionFactory;
 import java.io.File;
 import java.io.IOException;
 
-/**
- *
- */
+
 public class QInstance {
 	public static final String Partitioner = "partitioner";
 	public static ClassProperty PartitionerClass = new ClassProperty("class", "", ValueSourceDatePartitioner.class);

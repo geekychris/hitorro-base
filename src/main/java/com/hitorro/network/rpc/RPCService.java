@@ -23,7 +23,7 @@ package com.hitorro.network.rpc;
 
 import com.hitorro.jsontypesystem.JVS;
 import com.hitorro.network.debugcommand.ActionRPCHandler;
-import com.hitorro.network.resourcecache.SendResourceCommand;
+
 import com.hitorro.network.rpc.cluster.ClusterService;
 import com.hitorro.network.rpc.cluster.IDef;
 import com.hitorro.util.commandandcontrol.TerminalListener;
@@ -44,7 +44,7 @@ import java.util.Map;
 @ServiceDefinition(dependentService = {},
 		shortName = "rpc",
 		description = "rpc service",
-		debugCommands = {SendResourceCommand.class},
+		debugCommands = {},
 		typeManagedClasses = {RPCMessage.class, FileUpload.class, StatusMessage.class},
 		uiDirectories = {})
 public class RPCService {

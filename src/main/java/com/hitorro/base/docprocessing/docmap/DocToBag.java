@@ -27,9 +27,7 @@ import java.io.IOException;
 import java.util.Date;
 
 
-/**
- *
- */
+
 public interface DocToBag {
 	String getExtension();
 

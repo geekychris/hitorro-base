@@ -42,9 +42,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
 
-/**
- *
- */
+
 public class HTSerializableUtil {
 
 	public static BaseMapper<InputStream, AbstractIterator<? extends HTSerializable>> is2htser = new BaseMapper<java.io.InputStream, AbstractIterator<? extends HTSerializable>>() {

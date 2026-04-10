@@ -87,7 +87,7 @@ public class IDef {
 	public static int getPortFor(JVS jvs, String protocol) {
 		Predicate<JsonNode> pred = getPortPredicate(protocol);
 		BaseMappingProperty<Integer> fe = new ForEach(portsKey, pred).mapToProperty(portKey);
-		return fe.apply(jvs);
+		return fe.apply(jvs.getJsonNode());
 	}
 
 	public static void removeCapability(JVS jvs, String capability, String segment) {

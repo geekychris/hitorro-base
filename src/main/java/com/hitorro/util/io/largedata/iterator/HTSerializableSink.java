@@ -34,9 +34,7 @@ import com.hitorro.util.typesystem.HTSerializable;
 import java.io.IOException;
 import java.io.OutputStream;
 
-/**
- *
- */
+
 public class HTSerializableSink<T extends HTSerializable> implements Sink<T> {
 	public static final BasefileProperty OutFileKey = new BasefileProperty("outfile", "output file");
 	private OutputStream os;

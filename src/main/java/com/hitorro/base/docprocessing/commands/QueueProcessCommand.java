@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.docprocessing.commands;
 
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.util.basefile.filters.FileExtension;
 import com.hitorro.util.basefile.filters.IsDir;
 import com.hitorro.util.basefile.fs.BaseFile;
@@ -51,9 +51,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Iterator;
 
-/**
- *
- */
+
 public abstract class QueueProcessCommand extends Command {
 	@CommandArgument(required = false)
 	public static final DateProperty startDateKey = new DateProperty("startdate", "", null);
@@ -64,11 +62,11 @@ public abstract class QueueProcessCommand extends Command {
 
 
 	public abstract boolean process(Iterator<BaseType> iter, final String rawValue,
-									final JVS args, final Response response,
+									final JsonNode args, final Response response,
 									final CommandSession session) throws IOException;
 
 	@Override
-	public boolean execute(final String rawValue, final JVS args, final Response response, final CommandSession session, RestOperations operation) throws Exception {
+	public boolean execute(final String rawValue, final JsonNode args, final Response response, final CommandSession session, RestOperations operation) throws Exception {
 		Date start = startDateKey.apply(args);
 		Date end = endDateKey.apply(args);
 		String p = hdfsPath.apply(args);

@@ -24,9 +24,7 @@ package com.hitorro.util.typesystem;
 import com.hitorro.util.core.Console;
 import com.hitorro.util.typesystem.valuesource.ValueSourceForClass;
 
-/**
- *
- */
+
 public class ValueSourceBaseFields extends BaseFields<ValueSourceForClass> {
 	private String idField = "id";
 	private String createdField = "created";

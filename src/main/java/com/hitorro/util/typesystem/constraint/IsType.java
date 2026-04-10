@@ -27,9 +27,7 @@ import com.hitorro.util.typesystem.HTSerializable;
 import com.hitorro.util.typesystem.TypeIntf;
 import com.hitorro.util.typesystem.TypeManager;
 
-/**
- *
- */
+
 public class IsType<T extends HTSerializable> implements HTPredicate<T> {
 	private final TypeManager tm;
 	private final TypeIntf type;

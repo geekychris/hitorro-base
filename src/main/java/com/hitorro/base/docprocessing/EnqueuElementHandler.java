@@ -32,9 +32,7 @@ import com.hitorro.util.typesystem.HTObjectOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-/**
- *
- */
+
 public class EnqueuElementHandler extends RPCHandler {
 	public static final String DocQueueRPCMethod = "enqueueadd";
 

@@ -26,9 +26,7 @@ import com.hitorro.util.core.opers.HTPredicate;
 import com.hitorro.util.typesystem.Type;
 import com.hitorro.util.typesystem.TypeIntf;
 
-/**
- *
- */
+
 public class IsViewForType implements HTPredicate<Type> {
 	private final TypeIntf owningType;
 	private final String view;

@@ -23,9 +23,7 @@ package com.hitorro.util.typesystem.valuesource;
 
 import com.hitorro.util.typesystem.Bag;
 
-/**
- *
- */
+
 public class BagValueSourceField extends ValueSourceField<ValueSourceForClass> {
 	private final String field;
 

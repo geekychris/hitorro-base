@@ -27,9 +27,7 @@ import com.hitorro.util.json.keys.StaticVarProperty;
 import com.hitorro.util.typesystem.valuesource.ValueMapMapper;
 import com.hitorro.util.typesystem.valuesource.ValueSourceForClass;
 
-/**
- *
- */
+
 public class MapValueMapMapper extends ValueMapMapper {
 	private static final StaticVarProperty<BaseMapper> MapperKey = new StaticVarProperty("mapper", "me class or member var", true, null, BaseMapper.class);
 	protected ThreadLocal<BaseMapper> threadData = new ThreadLocal();

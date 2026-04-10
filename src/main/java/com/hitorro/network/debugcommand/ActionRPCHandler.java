@@ -21,7 +21,7 @@
  */
 package com.hitorro.network.debugcommand;
 
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.network.rpc.FileHandleTopic;
 import com.hitorro.network.rpc.RPCHandler;
 import com.hitorro.network.rpc.RPCMessage;
@@ -86,7 +86,7 @@ public class ActionRPCHandler extends RPCHandler {
 		m_topics.put(fht.getTopic(), fht);
 	}
 
-	private List<InfoRow> execute(String verb, JVS args) {
+	private List<InfoRow> execute(String verb, JsonNode args) {
 		List<InfoRow> list = new ArrayList<InfoRow>();
 		HTSerializedResponse resp = new HTSerializedResponse(list);
 		Command dc = CommandRegistry.getRegistry().get(verb);

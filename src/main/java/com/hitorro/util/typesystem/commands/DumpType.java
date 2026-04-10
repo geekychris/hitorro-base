@@ -21,7 +21,7 @@
  */
 package com.hitorro.util.typesystem.commands;
 
-import com.hitorro.jsontypesystem.JVS;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.hitorro.util.commandandcontrol.Command;
 import com.hitorro.util.commandandcontrol.CommandSession;
 import com.hitorro.util.commandandcontrol.MultiRowResponse;
@@ -57,7 +57,7 @@ public class DumpType extends Command {
 					@ColumnGroup(start = 4, size = 2, name = "ftprops")})
 	private final ResponseShape shape = new ResponseShape();
 
-	public boolean execute(String rawValue, JVS args, Response response, CommandSession session, RestOperations operation) throws Exception {
+	public boolean execute(String rawValue, JsonNode args, Response response, CommandSession session, RestOperations operation) throws Exception {
 		String name = TypeName.apply(args);
 		Type type = (Type)
 				TypeManager.getTypeManager().getTypeByShortName(name);

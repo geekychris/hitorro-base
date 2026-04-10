@@ -26,9 +26,7 @@ import com.hitorro.util.core.classes.ClassUtil;
 import com.hitorro.util.core.iterator.sinks.Sink;
 import com.hitorro.util.json.keys.ClassProperty;
 
-/**
- *
- */
+
 public class SinkTargetInitializer {
 	public static final ClassProperty Impl = new ClassProperty("impl", "implementation of the reader", null);
 

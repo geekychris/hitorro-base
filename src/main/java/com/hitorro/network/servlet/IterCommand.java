@@ -26,9 +26,7 @@ import com.hitorro.util.core.iterator.AbstractIterator;
 import com.hitorro.util.core.iterator.sinks.Sink;
 
 
-/**
- *
- */
+
 public interface IterCommand {
 	String getCommand();
 

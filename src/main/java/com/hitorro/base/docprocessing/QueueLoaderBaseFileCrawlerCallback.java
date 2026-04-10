@@ -37,9 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- */
+
 public class QueueLoaderBaseFileCrawlerCallback extends BaseFileCrawlerCallback {
 	private final EnqueueClient client;
 	private final DocToBagContext d2bcontext;
