@@ -248,7 +248,7 @@ public final class ServletUtil {
 		return p;
 	}
 
-	public static String getZerothElement(String[] s) {
+	public static final String getZerothElement(String[] s) {
 		if (s == null || s.length == 0) {
 			return null;
 		}

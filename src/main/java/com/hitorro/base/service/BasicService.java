@@ -70,7 +70,7 @@ import java.util.List;
 		uiDirectories = {},
 		dbInitShellScripts = {"${HT_BIN}/data/initdb/commandscripts/basicservice.scr"})
 public class BasicService implements EventListener {
-	public static final FileProperty RunScriptOnStartup = new FileProperty("startup.runscript", "Run script on startup of server");
+	public static FileProperty RunScriptOnStartup = new FileProperty("startup.runscript", "Run script on startup of server");
 
 	private CleanShutdownExitHandler m_shutdown = null;
 

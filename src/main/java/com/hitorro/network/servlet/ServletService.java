@@ -76,7 +76,7 @@ public final class ServletService {
 	/**
 	 * the port number we listen on
 	 */
-	public static final StringProperty HttpRootPath = new StringProperty("defaulthttp.rooturl", "number for http port", null);
+	public static StringProperty HttpRootPath = new StringProperty("defaulthttp.rooturl", "number for http port", null);
 	// our special contexts
 	private static final String InternalContext = "internal";
 	private static final String ExternalContext = "external";

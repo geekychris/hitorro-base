@@ -32,7 +32,7 @@ import java.io.IOException;
  * init them with the correct EnqueueHandler
  */
 public class EnqueueHandlerReaderInitializer {
-	public static final ClassProperty Impl = new ClassProperty("impl", "implementation of the reader", null);
+	public static ClassProperty Impl = new ClassProperty("impl", "implementation of the reader", null);
 
 	public static EnqueueHandlerReader init(JsonNode node, EnqueueHandler handler) throws IOException {
 		Class impClass = Impl.apply(node);

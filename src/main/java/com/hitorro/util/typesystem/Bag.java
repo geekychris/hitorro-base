@@ -47,7 +47,7 @@ public class Bag extends BaseType implements HTSerializable, ValueSourceForClass
 	private TypeIntf t;
 	private String[] fieldNames = null;
 
-	public static final Bag getBagForType(String shortName) {
+	public static Bag getBagForType(String shortName) {
 		Type t = (Type) TypeManager.getTypeManager().getTypeByShortName(shortName);
 		if (t == null) {
 			Log.typemanager.error("Unable to contruct bag for type:%s, type does not exist", shortName);

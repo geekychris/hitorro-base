@@ -25,5 +25,5 @@ import com.hitorro.util.log.Logger;
 
 
 public class Log {
-	public static final Logger typemanager = Logger.getLogger("ht.typemanager");
+	public static Logger typemanager = Logger.getLogger("ht.typemanager");
 }

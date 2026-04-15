@@ -44,7 +44,7 @@ public class AuthenticationService implements Auditable {
  	private final List<AuthenticationMethod> defaultList = new ArrayList<AuthenticationMethod>();
 	private final Map<String, AuthenticationMethod> m_methods = new HashMap<String, AuthenticationMethod>();
 
-	public static final AuthenticationService getService() {
+	public static AuthenticationService getService() {
 		return s_service;
 	}
 

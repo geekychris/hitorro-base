@@ -31,8 +31,8 @@ import com.hitorro.util.typesystem.valuesource.ValueSourceForClass;
  * com.hitorro.util.typesystem.valuesource.me.PrefixCombiner
  */
 public class PrefixCombiner extends ValueMapMapper {
-	public static final StringProperty Left = new StringProperty("srcfield", "", null);
-	public static final StringProperty Prefix = new StringProperty("prefix", "", null);
+	public static StringProperty Left = new StringProperty("srcfield", "", null);
+	public static StringProperty Prefix = new StringProperty("prefix", "", null);
 
 	private String field;
 	private String prefix;

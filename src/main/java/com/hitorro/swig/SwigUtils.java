@@ -22,15 +22,15 @@
 package com.hitorro.swig;
 
 public class SwigUtils {
-	public static int makeHardLink(String oldpath, String newpath) {
+	public static final int makeHardLink(String oldpath, String newpath) {
 		return SwigUtilsJNI.makeHardLink(oldpath, newpath);
 	}
 
-	public static int makeSymboliLink(String oldpath, String newpath) {
+	public static final int makeSymboliLink(String oldpath, String newpath) {
 		return SwigUtilsJNI.makeSymboliLink(oldpath, newpath);
 	}
 
-	public static int unlink(String path) {
+	public static final int unlink(String path) {
 		return SwigUtilsJNI.unlink(path);
 	}
 
@@ -44,67 +44,67 @@ public class SwigUtils {
 		return (cPtr == 0) ? null : new StatData(cPtr, false);
 	}
 
-	public static int getProcessId() {
+	public static final int getProcessId() {
 		return SwigUtilsJNI.getProcessId();
 	}
 
-	public static int getParentProcessId() {
+	public static final int getParentProcessId() {
 		return SwigUtilsJNI.getParentProcessId();
 	}
 
-	public static int setUMask(int mask) {
+	public static final int setUMask(int mask) {
 		return SwigUtilsJNI.setUMask(mask);
 	}
 
-	public static int getProcessGroupId() {
+	public static final int getProcessGroupId() {
 		return SwigUtilsJNI.getProcessGroupId();
 	}
 
-	public static int setProcessGroupId(int processID, int pgrp) {
+	public static final int setProcessGroupId(int processID, int pgrp) {
 		return SwigUtilsJNI.setProcessGroupId(processID, pgrp);
 	}
 
-	public static int sendSignal(int processId, int signal) {
+	public static final int sendSignal(int processId, int signal) {
 		return SwigUtilsJNI.sendSignal(processId, signal);
 	}
 
-	public static int getGroupId() {
+	public static final int getGroupId() {
 		return SwigUtilsJNI.getGroupId();
 	}
 
-	public static int getEffectiveGroupId() {
+	public static final int getEffectiveGroupId() {
 		return SwigUtilsJNI.getEffectiveGroupId();
 	}
 
-	public static int setGroupId(int gid) {
+	public static final int setGroupId(int gid) {
 		return SwigUtilsJNI.setGroupId(gid);
 	}
 
-	public static int setEffectiveGroupID(int gid) {
+	public static final int setEffectiveGroupID(int gid) {
 		return SwigUtilsJNI.setEffectiveGroupID(gid);
 	}
 
-	public static int setEngrent() {
+	public static final int setEngrent() {
 		return SwigUtilsJNI.setEngrent();
 	}
 
-	public static int getGrent() {
+	public static final int getGrent() {
 		return SwigUtilsJNI.getGrent();
 	}
 
-	public static int getLimit(int resource, int isHard) {
+	public static final int getLimit(int resource, int isHard) {
 		return SwigUtilsJNI.getLimit(resource, isHard);
 	}
 
-	public static int setEffectiveLimit(int resource, int isHard, int limit) {
+	public static final int setEffectiveLimit(int resource, int isHard, int limit) {
 		return SwigUtilsJNI.setEffectiveLimit(resource, isHard, limit);
 	}
 
-	public static int getNice(int which, int whom) {
+	public static final int getNice(int which, int whom) {
 		return SwigUtilsJNI.getNice(which, whom);
 	}
 
-	public static int setNice(int which, int whom, int nice) {
+	public static final int setNice(int which, int whom, int nice) {
 		return SwigUtilsJNI.setNice(which, whom, nice);
 	}
 

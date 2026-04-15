@@ -37,8 +37,8 @@ import java.util.List;
  * enqueue rpc, that could be a block queue (to file or local file system, or it could be a docprocessor.
  */
 public class ECSinkTarget<T extends HTSerializable> implements Sink<T> {
-	public static final StringProperty CapKey = new StringProperty("capability", "", QueueService.EnqueueKey);
-	public static final StringProperty SegmentKey = new StringProperty("segment", "", null);
+	public static StringProperty CapKey = new StringProperty("capability", "", QueueService.EnqueueKey);
+	public static StringProperty SegmentKey = new StringProperty("segment", "", null);
 	private EnqueueClient<T> ec;
 
 	public ECSinkTarget() {

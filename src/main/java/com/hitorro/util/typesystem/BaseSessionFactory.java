@@ -54,7 +54,7 @@ public abstract class BaseSessionFactory<S extends BaseSession> {
      * Convenience method to close a session using the registered factory.
      * @param closeMe the session to close
      */
-    public static final void closeSession(BaseSession closeMe) {
+    public static void closeSession(BaseSession closeMe) {
         if (factory != null) {
             factory.close(closeMe);
         }

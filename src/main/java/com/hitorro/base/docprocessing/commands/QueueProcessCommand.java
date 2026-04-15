@@ -54,11 +54,11 @@ import java.util.Iterator;
 
 public abstract class QueueProcessCommand extends Command {
 	@CommandArgument(required = false)
-	public static final DateProperty startDateKey = new DateProperty("startdate", "", null);
+	public static DateProperty startDateKey = new DateProperty("startdate", "", null);
 	@CommandArgument(required = false)
-	public static final DateProperty endDateKey = new DateProperty("enddate", "", null);
+	public static DateProperty endDateKey = new DateProperty("enddate", "", null);
 	@CommandArgument(required = true)
-	public static final StringProperty hdfsPath = new StringProperty("path", "hdfs path", null);
+	public static StringProperty hdfsPath = new StringProperty("path", "hdfs path", null);
 
 
 	public abstract boolean process(Iterator<BaseType> iter, final String rawValue,

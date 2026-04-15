@@ -51,12 +51,12 @@ import java.util.List;
 		typeManagedClasses = {},
 		uiDirectories = {})
 public class MonitorService implements Runnable {
-	public static final IntegerProperty InvokeWaitInSeconds =
+	public static IntegerProperty InvokeWaitInSeconds =
 			new IntegerProperty("monitor.invokewait",
 					"Invocation wait period in seconds",
 					60);
 
-	public static final BooleanProperty IsNetMonitor =
+	public static BooleanProperty IsNetMonitor =
 			new BooleanProperty("monitor.isnetmonitor",
 					"",
 					false);

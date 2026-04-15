@@ -31,19 +31,19 @@ public class BaseAdapterItemCacheSet {
 	private static final Map<String, ProxyAdapter> proxySet = new HashMap<String, ProxyAdapter>();
 
 
-	public static final BaseAdapterItemCache get(String adapter) {
+	public static BaseAdapterItemCache get(String adapter) {
 		return set.get(adapter);
 	}
 
-	public static final void setCache(String adapter, BaseAdapterItemCache cache) {
+	public static void setCache(String adapter, BaseAdapterItemCache cache) {
 		set.put(adapter, cache);
 	}
 
-	public static final ProxyAdapter getProxy(String adapter) {
+	public static ProxyAdapter getProxy(String adapter) {
 		return proxySet.get(adapter);
 	}
 
-	public static final void setProxy(String adapter, ProxyAdapter cache) {
+	public static void setProxy(String adapter, ProxyAdapter cache) {
 		proxySet.put(adapter, cache);
 	}
 }

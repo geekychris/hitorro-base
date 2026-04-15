@@ -26,9 +26,9 @@ import com.hitorro.util.json.keys.IntegerProperty;
 import com.hitorro.util.json.keys.StringProperty;
 
 public class MonitorAlertUtil {
-	public static final StringProperty DevicePrefix = new StringProperty("monitor.deviceprefix",
+	public static StringProperty DevicePrefix = new StringProperty("monitor.deviceprefix",
 			"", "/dev/");
-	public static final IntegerProperty MinPercent =
+	public static IntegerProperty MinPercent =
 			new IntegerProperty("monitor.minpercent",
 					"",
 					90);

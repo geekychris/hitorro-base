@@ -28,7 +28,7 @@ import com.hitorro.util.json.keys.ClassProperty;
 
 
 public class SinkTargetInitializer {
-	public static final ClassProperty Impl = new ClassProperty("impl", "implementation of the reader", null);
+	public static ClassProperty Impl = new ClassProperty("impl", "implementation of the reader", null);
 
 	public static Sink init(JsonNode node) {
 		Class impClass = Impl.apply(node);

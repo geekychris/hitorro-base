@@ -84,7 +84,7 @@ public class IDef {
 		return ClusterService.getThisInstanceDefinition().getInstanceStub().getId().equals(jvs.getId());
 	}
 
-	public static int getPortFor(JVS jvs, String protocol) {
+	public static final int getPortFor(JVS jvs, String protocol) {
 		Predicate<JsonNode> pred = getPortPredicate(protocol);
 		BaseMappingProperty<Integer> fe = new ForEach(portsKey, pred).mapToProperty(portKey);
 		return fe.apply(jvs.getJsonNode());
@@ -110,7 +110,7 @@ public class IDef {
 		ClusterService.getService().touch();
 	}
 
-	public static String getHostName(JVS jvs) {
+	public static final String getHostName(JVS jvs) {
 		try {
 			InetAddress addr = InetAddress.getByName(jvs.getString(ipAddressKey));
 			return addr.getHostName();

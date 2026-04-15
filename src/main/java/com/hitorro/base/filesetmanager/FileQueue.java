@@ -48,9 +48,9 @@ import java.util.Date;
  * iterator mapped to some other form, for example, a queue of tweets in json format mapped to bags
  */
 public class FileQueue<T, MAPPED> extends FileSet<T, MAPPED> {
-	public static final BasefileProperty PathKey = new BasefileProperty("path", "path of where the queue is");
-	public static final BooleanProperty IsInboxManaged = new BooleanProperty("inbox", "data files initially go into the inbox directory", false);
-	public static final DateProperty InceptDate = new DateProperty("inceptdate", "date that data started appearing there", DateResolution.json, new Date());
+	public static BasefileProperty PathKey = new BasefileProperty("path", "path of where the queue is");
+	public static BooleanProperty IsInboxManaged = new BooleanProperty("inbox", "data files initially go into the inbox directory", false);
+	public static DateProperty InceptDate = new DateProperty("inceptdate", "date that data started appearing there", DateResolution.json, new Date());
 	protected HTPredicate<BaseFile> defaultLO;
 	protected JsonNode queueMap;
 	private final BaseFile path;

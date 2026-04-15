@@ -32,8 +32,8 @@ import java.util.Date;
 
 
 public class ValueSourceDatePartitioner extends DateBasedWriterPartitioner<ValueSourceForClass> {
-	public static final StringProperty idField = new StringProperty("idfield", "", "id");
-	public static final StringProperty createField = new StringProperty("createField", "", "created");
+	public static StringProperty idField = new StringProperty("idfield", "", "id");
+	public static StringProperty createField = new StringProperty("createField", "", "created");
 	protected ValueSourceBaseFields bf = new ValueSourceBaseFields();
 
 	public void initForPass(JsonNode params) {

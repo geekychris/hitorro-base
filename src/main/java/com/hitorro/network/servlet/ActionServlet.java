@@ -41,9 +41,9 @@ import java.io.OutputStream;
 import java.util.Map;
 
 public class ActionServlet extends HttpServlet {
-	public static final IntegerProperty HtmlRefresh = new IntegerProperty("htmlrefresh", "if set respond with html rather than xml", 0);
+	public static IntegerProperty HtmlRefresh = new IntegerProperty("htmlrefresh", "if set respond with html rather than xml", 0);
 
-	public static final EnumKey<OutputFormatEnum> OutputType = new EnumKey<OutputFormatEnum>("otype", "", OutputFormatEnum.values(), OutputFormatEnum.Json);
+	public static EnumKey<OutputFormatEnum> OutputType = new EnumKey<OutputFormatEnum>("otype", "", OutputFormatEnum.values(), OutputFormatEnum.Json);
 
 	/**
 	 *

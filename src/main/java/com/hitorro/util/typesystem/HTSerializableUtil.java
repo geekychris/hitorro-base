@@ -60,7 +60,7 @@ public class HTSerializableUtil {
 	public static BaseMapper<File, AbstractIterator<? extends HTSerializable>> fs2htser = FileUtil.fsInputStream.combine(is2htser);
 	public static BaseMapper<BaseFile, Sink<? extends HTSerializable>> bf2htser = BaseFileUtil.bf2outputstream.combine(os2htser);
 
-	public static final byte[] getHTSerializableBuffer(HTSerializable pts, ByteArrayOutputStream baos) {
+	public static byte[] getHTSerializableBuffer(HTSerializable pts, ByteArrayOutputStream baos) {
 		try {
 			baos.reset();
 			HTObjectOutputStream os = new HTObjectOutputStreamImpl(null, baos,
@@ -78,12 +78,12 @@ public class HTSerializableUtil {
 		return null;
 	}
 
-	public static final byte[] getHTSerializableBuffer(HTSerializable pts) {
+	public static byte[] getHTSerializableBuffer(HTSerializable pts) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		return getHTSerializableBuffer(pts, baos);
 	}
 
-	public static final boolean writeHTSerializableToOutputStream(HTSerializable pts,
+	public static boolean writeHTSerializableToOutputStream(HTSerializable pts,
 																  OutputStream os) {
 		ObjectOutputStream oos = null;
 		try {

@@ -33,11 +33,11 @@ import com.hitorro.util.urlparser.UrlNormalizer;
  * UrlNormalizer is not thread safe so we need to new one up per thread.  They NEVER go away.
  */
 public class UrlHashMapper extends ValueMapMapper {
-	public static final BooleanProperty Canonical = new BooleanProperty("canonical", "", false);
+	public static BooleanProperty Canonical = new BooleanProperty("canonical", "", false);
 
-	public static final BooleanProperty IncludeWWW = new BooleanProperty("includewww", "", false);
+	public static BooleanProperty IncludeWWW = new BooleanProperty("includewww", "", false);
 
-	public static final BooleanProperty IncludeHTTP = new BooleanProperty("includehttp", "", false);
+	public static BooleanProperty IncludeHTTP = new BooleanProperty("includehttp", "", false);
 	protected ThreadLocal<UrlNormalizer> threadData = new ThreadLocal();
 	private boolean canonical;
 	private boolean includeWWW;

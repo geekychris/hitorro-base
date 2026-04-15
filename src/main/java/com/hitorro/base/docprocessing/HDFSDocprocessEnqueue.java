@@ -46,8 +46,8 @@ import java.io.IOException;
  */
 public class HDFSDocprocessEnqueue<T> implements EnqueueHandlerReader<T>, Runnable {
 
-	public static final FileProperty LgkProperty = new FileProperty("lgkname", "", "${ht_home}/queuekeys/file.lgk");
-	public static final StringProperty QueueRootProperty = new StringProperty("root", "", "file://${ht_home}/queue/docs");
+	public static FileProperty LgkProperty = new FileProperty("lgkname", "", "${ht_home}/queuekeys/file.lgk");
+	public static StringProperty QueueRootProperty = new StringProperty("root", "", "file://${ht_home}/queue/docs");
 	private String rootString;
 	private BaseFile root;
 	private EnqueueHandler<T> eh;

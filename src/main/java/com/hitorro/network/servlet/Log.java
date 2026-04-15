@@ -27,5 +27,5 @@ public class Log extends com.hitorro.util.core.Log {
 	/**
 	 * General logger for servlet work.
 	 */
-	public static final Logger servlet = Logger.getLogger("ht.network.servlet");
+	public static Logger servlet = Logger.getLogger("ht.network.servlet");
 }

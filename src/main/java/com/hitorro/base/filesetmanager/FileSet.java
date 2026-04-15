@@ -54,8 +54,8 @@ import java.util.Map;
  * specific format and mappings.
  */
 public class FileSet<T, MAPPED> {
-	public static final BooleanProperty IsQueue = new BooleanProperty("isqueue", "Is it to be managed as a queue", false);
-	public static final StringListFromDelimitedKey ExtensionsKey = new StringListFromDelimitedKey("extensions", "filename extensions", ",", null);
+	public static BooleanProperty IsQueue = new BooleanProperty("isqueue", "Is it to be managed as a queue", false);
+	public static StringListFromDelimitedKey ExtensionsKey = new StringListFromDelimitedKey("extensions", "filename extensions", ",", null);
 	public final StaticVarProperty<BaseMapper<BaseFile, AbstractIterator<T>>> IteratorMapperKey = new StaticVarProperty("iterator", "basefile to target iterator", false, null, Mapper.class);
 	public final StaticVarProperty<BaseMapper<T, MAPPED>> MapperKey = new StaticVarProperty("mapper", "apply from one object type to another", false, null, Mapper.class);
 	protected BaseMapper<BaseFile, AbstractIterator<T>> iterMapper;

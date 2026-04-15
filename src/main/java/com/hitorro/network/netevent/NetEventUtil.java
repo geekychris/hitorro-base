@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class NetEventUtil {
-	public static final void sendSingleEventNow(String subsystem,
+	public static void sendSingleEventNow(String subsystem,
 												String topic,
 												String subTopic,
 												List<String> args,
@@ -45,14 +45,14 @@ public class NetEventUtil {
 		}
 	}
 
-	public static final void sendSingleEventAllNow(String subsystem, String topic, String subTopic, List<String> args, boolean notifyLocal)
+	public static void sendSingleEventAllNow(String subsystem, String topic, String subTopic, List<String> args, boolean notifyLocal)
 			throws IOException, ClassNotFoundException, StoreException {
 		RPCMessage msg = RPCService.s_service.getGlobalBroadcastMessageToSend(EventRPC.EventRPCMethod);
 		constructAndSend(msg, notifyLocal, subsystem, topic, subTopic, args);
 
 	}
 
-	public static final void sendSingleEventNow(String subsystem,
+	public static void sendSingleEventNow(String subsystem,
 												String topic,
 												String subTopic,
 												List<String> args,
@@ -80,7 +80,7 @@ public class NetEventUtil {
 	}
 
 
-	public static final void sendSingleEventBackTo(RPCMessage message, String subsystem, String topic, String subTopic, List<String> args)
+	public static void sendSingleEventBackTo(RPCMessage message, String subsystem, String topic, String subTopic, List<String> args)
 			throws IOException, ClassNotFoundException, StoreException {
 		RPCMessage msg = RPCService.s_service.getMessageToSend(message.getFromIPAddress(), message.getFromPortNumber(), EventRPC.EventRPCMethod, false);
 		constructAndSend(msg, false, subsystem, topic, subTopic, args);

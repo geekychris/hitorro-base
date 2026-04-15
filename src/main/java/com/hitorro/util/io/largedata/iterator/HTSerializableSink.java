@@ -36,7 +36,7 @@ import java.io.OutputStream;
 
 
 public class HTSerializableSink<T extends HTSerializable> implements Sink<T> {
-	public static final BasefileProperty OutFileKey = new BasefileProperty("outfile", "output file");
+	public static BasefileProperty OutFileKey = new BasefileProperty("outfile", "output file");
 	private OutputStream os;
 	private HTObjectOutputStream hos;
 	private int count = 0;

@@ -29,13 +29,13 @@ import org.apache.lucene.analysis.Analyzer;
  * Created by chris on 3/5/16.
  */
 public abstract class GenericAnalyzerBase extends Analyzer {
-	public static final IntegerProperty MinLengthProperty = new IntegerProperty("index.filter.length.min", "Minimum length for a token", 2);
-	public static final IntegerProperty MaxLengthProperty = new IntegerProperty("index.filter.length.min", "Maximum length for a token", 40);
-	public static final IntegerProperty PhraseDepthProperty = new IntegerProperty("index.filter.phrasedepth", "Maximum phrase depth", 3);
+	public static IntegerProperty MinLengthProperty = new IntegerProperty("index.filter.length.min", "Minimum length for a token", 2);
+	public static IntegerProperty MaxLengthProperty = new IntegerProperty("index.filter.length.min", "Maximum length for a token", 40);
+	public static IntegerProperty PhraseDepthProperty = new IntegerProperty("index.filter.phrasedepth", "Maximum phrase depth", 3);
 
-	public static final IntegerProperty PhraseMinDepthProperty = new IntegerProperty("index.filter.minphrasedepth", "Maximum min phrase depth", 1);
+	public static IntegerProperty PhraseMinDepthProperty = new IntegerProperty("index.filter.minphrasedepth", "Maximum min phrase depth", 1);
 
-	public static final StringProperty Standard = new StringProperty("index.analyzer.standard", "", "STANDARD, CASE");
+	public static StringProperty Standard = new StringProperty("index.analyzer.standard", "", "STANDARD, CASE");
 	public static final String StandardSansPhrase = "STANDARD, CASE, PORTERSTEM, NUMBER, LENGTH";
 	public static final String StandardWithPhraseForDF = "STANDARD, CASE, PORTERSTEM, NUMBER, LENGTH, PHRASE4DF";
 	public static final String StandardWithPhrase = "STANDARD, CASE, PORTERSTEM, NUMBER, LENGTH, PHRASE";

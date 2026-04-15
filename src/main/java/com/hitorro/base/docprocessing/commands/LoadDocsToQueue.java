@@ -39,11 +39,11 @@ import com.hitorro.util.json.keys.StringProperty;
 @CommandDef(command = "bags.loadtoqueue", description = "Crawl a directory to find files to load into the provided queue.")
 public class LoadDocsToQueue extends Command {
 	@CommandArgument(required = true)
-	public static final StringProperty PathKey = new StringProperty("path", "file:// or file:// path to content", null);
+	public static StringProperty PathKey = new StringProperty("path", "file:// or file:// path to content", null);
 	@CommandArgument(required = false)
-	public static final StringProperty QueueKey = new StringProperty("queue", "file:// or file:// path to content", "docs");
+	public static StringProperty QueueKey = new StringProperty("queue", "file:// or file:// path to content", "docs");
 	@CommandArgument(required = false)
-	public static final StringProperty BagtypeKey = new StringProperty("bagtype", "", "webpage");
+	public static StringProperty BagtypeKey = new StringProperty("bagtype", "", "webpage");
 
 	public boolean execute(String rawValue, JsonNode args, Response response, CommandSession session) throws Exception {
 		String path = PathKey.apply(args);

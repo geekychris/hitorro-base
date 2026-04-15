@@ -47,7 +47,7 @@ import java.util.function.Predicate;
 		typeManagedClasses = {},
 		uiDirectories = {})
 public class ClusterService implements ClusterServiceInterface, BaseCollectionChangeNotifier<JVS> {
-	public static final BooleanProperty DisableLocalHostIPCheck =
+	public static BooleanProperty DisableLocalHostIPCheck =
 			new BooleanProperty("network.disablelocalhostcheck",
 					"if we dont have a network connection we may end up with localhost return for an ip", false);
 	// constants for the port types registered with the IDef.
@@ -91,7 +91,7 @@ public class ClusterService implements ClusterServiceInterface, BaseCollectionCh
 		return me;
 	}
 
-	public static final ClusterService getService() {
+	public static ClusterService getService() {
 		return s_service;
 	}
 

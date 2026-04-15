@@ -51,12 +51,12 @@ import java.util.Map;
 
 public class TypeManager extends TypeManagerBase implements EventListener {
 	//TODO Update turned off proxy
-	public static final StringProperty DefaultAccessor = new StringProperty("typemanager.defaultaccessor", "Class used as the default guid accessor", "ht.base.typesystem.accessors.GuidAccessor");
-	public static final ClassProperty FieldKey = new ClassProperty("class", "", String.class);
-	public static final ClassProperty MapperClassKey = new ClassProperty("class", "", ValueMapMapper.class);
-	public static final StringProperty MapperKey = new StringProperty("mapper", "me associated with a field", null);
-	public static final StringProperty TypeKey = new StringProperty("type", "", null);
-	public static final StringProperty ExtendsKey = new StringProperty("extends", "", null);
+	public static StringProperty DefaultAccessor = new StringProperty("typemanager.defaultaccessor", "Class used as the default guid accessor", "ht.base.typesystem.accessors.GuidAccessor");
+	public static ClassProperty FieldKey = new ClassProperty("class", "", String.class);
+	public static ClassProperty MapperClassKey = new ClassProperty("class", "", ValueMapMapper.class);
+	public static StringProperty MapperKey = new StringProperty("mapper", "me associated with a field", null);
+	public static StringProperty TypeKey = new StringProperty("type", "", null);
+	public static StringProperty ExtendsKey = new StringProperty("extends", "", null);
 	public static final String EventTopic = "TypeManager";
     /*public static Enhancer FullTextEnhancer = CGLibUtil.get(FullTextAttributeMetaInfoImpl.class,
             FullTextAttributeMetaInfo.class,
@@ -123,7 +123,7 @@ public class TypeManager extends TypeManagerBase implements EventListener {
 		return t;
 	}
 
-	public static final void executeTrigger(OnTrigger.TriggerType key, Object o, boolean recurse) {
+	public static void executeTrigger(OnTrigger.TriggerType key, Object o, boolean recurse) {
 		if (o == null) {
 			Log.typemanager.warn("Null Object passed to executeTrigger %s", key);
 		}

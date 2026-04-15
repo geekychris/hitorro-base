@@ -51,25 +51,25 @@ public class RPCService {
 
 
 	// config keys.
-	public static final IntegerProperty PortNumber = new IntegerProperty("rpcport", "port that the telnet service runs on", 6050);
+	public static IntegerProperty PortNumber = new IntegerProperty("rpcport", "port that the telnet service runs on", 6050);
 
 	//TODO Update turned off multigram for now
-	public static final BooleanProperty EnableMultigram = new BooleanProperty("multigram.enable", "enable multigram protocols, in dev some routers dont support it", false);
+	public static BooleanProperty EnableMultigram = new BooleanProperty("multigram.enable", "enable multigram protocols, in dev some routers dont support it", false);
 
 
-	public static final BooleanProperty EnableClusterMember =
+	public static BooleanProperty EnableClusterMember =
 			new BooleanProperty("cluster.enable.member", "enable this instance as a member of a cluster", false);
 
-	public static final BooleanProperty EnableNodeIsBroker =
+	public static BooleanProperty EnableNodeIsBroker =
 			new BooleanProperty("cluster.enable.broker", "This node is a discovery broker", false);
 
-	public static final IntegerProperty NumberOfRetries =
+	public static IntegerProperty NumberOfRetries =
 			new IntegerProperty("cluster.enable.noackretries", "Number of retries before we consider the node not responding.", 10);
 
-	public static final StringProperty ClusterName =
+	public static StringProperty ClusterName =
 			new StringProperty("cluster.name", "Name of the cluster", "HiTorro");
 
-	public static final StringProperty ClusterAddress =
+	public static StringProperty ClusterAddress =
 			new StringProperty("cluster.address", "Global broadcast address used for cluster", "225.2.3.5");
 	private static final String RPCGroup = "RPC Listener Group";
 	public static RPCService s_service;

@@ -31,15 +31,15 @@ import com.hitorro.util.typesystem.valuesource.ValueSourceForClassStandardImpl;
 import java.lang.annotation.Annotation;
 
 public class TypeClassMetaInfoImpl implements TypeClassMetaInfo {
-	public static final ClassProperty GuidAccessorKey = new ClassProperty("guidaccessor", "", null);
-	public static final StringProperty ShortTypeNameKey = new StringProperty("shortname", "", null);
-	public static final StringProperty SoftLinksFieldKey = new StringProperty("softlinksfield", "", null);
-	public static final IntegerProperty SchemeVersionKey = new IntegerProperty("schemeversion", "", 1);
-	public static final ClassProperty ValueSourceClassKey = new ClassProperty("vsourceclass", "", null);
-	public static final BooleanProperty isViewKey = new BooleanProperty("isview", "", false);
-	public static final BooleanProperty isPersistedKey = new BooleanProperty("ispersisted", "", false);
-	public static final BooleanProperty isDynamicKey = new BooleanProperty("isdynamic", "", false);
-	public static final BooleanProperty isDisableFastAccessorsKey = new BooleanProperty("isableFastAccessors", "", false);
+	public static ClassProperty GuidAccessorKey = new ClassProperty("guidaccessor", "", null);
+	public static StringProperty ShortTypeNameKey = new StringProperty("shortname", "", null);
+	public static StringProperty SoftLinksFieldKey = new StringProperty("softlinksfield", "", null);
+	public static IntegerProperty SchemeVersionKey = new IntegerProperty("schemeversion", "", 1);
+	public static ClassProperty ValueSourceClassKey = new ClassProperty("vsourceclass", "", null);
+	public static BooleanProperty isViewKey = new BooleanProperty("isview", "", false);
+	public static BooleanProperty isPersistedKey = new BooleanProperty("ispersisted", "", false);
+	public static BooleanProperty isDynamicKey = new BooleanProperty("isdynamic", "", false);
+	public static BooleanProperty isDisableFastAccessorsKey = new BooleanProperty("isableFastAccessors", "", false);
 	private String m_shortTypeName;
 	private ImplClassMeta[] classMeta;
 	private AdapterClassMeta[] adapterClassMeta;
