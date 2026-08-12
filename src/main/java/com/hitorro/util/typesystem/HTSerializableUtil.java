@@ -22,6 +22,7 @@
 package com.hitorro.util.typesystem;
 
 import com.hitorro.util.basefile.fs.BaseFile;
+import com.hitorro.util.core.iterator.helpers.FileMappers;
 import com.hitorro.util.basefile.tools.BaseFileUtil;
 import com.hitorro.util.core.Log;
 import com.hitorro.util.core.iterator.AbstractIterator;
@@ -57,7 +58,7 @@ public class HTSerializableUtil {
 			return new HTSerializableSink(os);
 		}
 	};
-	public static BaseMapper<File, AbstractIterator<? extends HTSerializable>> fs2htser = FileUtil.fsInputStream.combine(is2htser);
+	public static BaseMapper<File, AbstractIterator<? extends HTSerializable>> fs2htser = FileMappers.fsInputStream.combine(is2htser);
 	public static BaseMapper<BaseFile, Sink<? extends HTSerializable>> bf2htser = BaseFileUtil.bf2outputstream.combine(os2htser);
 
 	public static byte[] getHTSerializableBuffer(HTSerializable pts, ByteArrayOutputStream baos) {

@@ -22,6 +22,7 @@
 package com.hitorro.network.servlet;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.hitorro.util.core.iterator.helpers.FileMappers;
 import com.hitorro.util.core.Console;
 import com.hitorro.util.core.iterator.AbstractIterator;
 import com.hitorro.util.core.iterator.NullIterator;
@@ -82,7 +83,7 @@ public class IterCommandServlet extends HttpServlet {
 
 		AbstractIterator<JsonNode> inputIter = NullIterator.me;
 		if (op == RestOperations.Post) {
-			inputIter = FileUtil.inputstream2JacksonjsonReader.apply(req.getInputStream());
+			inputIter = FileMappers.inputstream2JacksonjsonReader.apply(req.getInputStream());
 		}
 		Map map = req.getParameterMap();
 		Enumeration headerNames = req.getHeaderNames();

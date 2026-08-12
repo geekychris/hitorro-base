@@ -516,7 +516,7 @@ public class Type implements TypeIntf {
 	 * @param constraint
 	 * @return
 	 */
-	public List<TypeFieldIntf> getTypeFieldsByConstraint(HTPredicate<TypeFieldIntf> constraint) {
+	public List<TypeFieldIntf> getTypeFieldsByConstraint(java.util.function.Predicate<TypeFieldIntf> constraint) {
 		List<TypeFieldIntf> list = new ArrayList<TypeFieldIntf>();
 		TypeFieldIntf[] fields = getTypeFields();
 		Set<TypeFieldIntf> set = new HashSet();
