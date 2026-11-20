@@ -45,10 +45,9 @@ import org.eclipse.jetty.server.SecureRequestCustomizer;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.SslConnectionFactory;
-import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.servlet.FilterHolder;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.ee10.servlet.FilterHolder;
+import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee10.servlet.ServletHolder;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 import javax.servlet.ServletException;
@@ -82,7 +81,7 @@ public final class ServletService {
 	private static final String ExternalContext = "external";
 	public static Server _server = null;
 	private static ServletService service;
-	HandlerCollection handlerCollection = null;
+	Handler.Sequence handlerCollection = null;
 	private int portNumber;
 	private Map<String, ServletContextHandler> _contextMap = null;
 	private final ActionServlet actionServletExternal = new ActionServlet(false);
@@ -227,7 +226,7 @@ public final class ServletService {
 		if (_contextMap.get(name) != null) {
 			return StringUtil.strcat("Duplicate servlet compContext: ", name);
 		}
-		ServletContextHandler ctxt = new ServletContextHandler(getHandlerCollection(), StringUtil.strcat("/", name), ServletContextHandler.SESSIONS);
+		ServletContextHandler ctxt = new ServletContextHandler(StringUtil.strcat("/", name), ServletContextHandler.SESSIONS);
 
 		_contextMap.put(name, ctxt);
 		addHandlerPrivate(ctxt);
@@ -335,9 +334,9 @@ public final class ServletService {
 		getHandlerCollection().addHandler(wc);
 	}
 
-	private HandlerCollection getHandlerCollection() {
+	private Handler.Sequence getHandlerCollection() {
 		if (handlerCollection == null) {
-			handlerCollection = new HandlerCollection();
+			handlerCollection = new Handler.Sequence();
 			_server.setHandler(handlerCollection);
 		}
 		return handlerCollection;

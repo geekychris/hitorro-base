@@ -23,9 +23,9 @@ package com.hitorro.network.servlet;
 
 import com.hitorro.util.webserver.WebServerProvider;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.ee10.servlet.ServletContextHandler;
+import org.eclipse.jetty.ee10.servlet.ServletHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,7 +42,7 @@ public class JettyWebServerProvider implements WebServerProvider {
     private static final Logger logger = LoggerFactory.getLogger(JettyWebServerProvider.class);
     
     private Server server;
-    private HandlerCollection handlerCollection;
+    private Handler.Sequence handlerCollection;
     private int port;
     private int httpsPort;
     
@@ -53,7 +53,7 @@ public class JettyWebServerProvider implements WebServerProvider {
             this.httpsPort = httpsPort;
             
             server = new Server(port);
-            handlerCollection = new HandlerCollection();
+            handlerCollection = new Handler.Sequence();
             server.setHandler(handlerCollection);
             
             logger.info("Jetty server initialized on port {}", port);
@@ -107,10 +107,10 @@ public class JettyWebServerProvider implements WebServerProvider {
     public Object addContext(String contextName) {
         try {
             ServletContextHandler context = new ServletContextHandler(
-                handlerCollection,
                 "/" + contextName,
                 ServletContextHandler.SESSIONS
             );
+            handlerCollection.addHandler(context);
             
             logger.debug("Added context: {}", contextName);
             return context;
@@ -158,9 +158,9 @@ public class JettyWebServerProvider implements WebServerProvider {
     /**
      * Get the handler collection (for advanced configuration).
      * 
-     * @return HandlerCollection instance
+     * @return Handler.Sequence instance
      */
-    public HandlerCollection getHandlerCollection() {
+    public Handler.Sequence getHandlerCollection() {
         return handlerCollection;
     }
 }
