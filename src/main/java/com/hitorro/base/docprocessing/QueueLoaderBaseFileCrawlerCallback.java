@@ -21,7 +21,8 @@
  */
 package com.hitorro.base.docprocessing;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.blockqueue.QueueService;
 import com.hitorro.base.docprocessing.docmap.DocToBag;
 import com.hitorro.base.docprocessing.docmap.DocToBagContext;
@@ -90,7 +91,7 @@ public class QueueLoaderBaseFileCrawlerCallback extends BaseFileCrawlerCallback 
 				}
 			}
 			return true;
-		} catch (IOException e) {
+		} catch (IOException | JacksonException e) {
 			Log.docmap.error("Unable to load file %s into me:%s with error %s %s", bf, dtb.getClass().getCanonicalName(), e, e);
 		} catch (StoreException e) {
 			Log.docmap.error("Unable to load file %s into me:%s with error %s %s", bf, dtb.getClass().getCanonicalName(), e, e);

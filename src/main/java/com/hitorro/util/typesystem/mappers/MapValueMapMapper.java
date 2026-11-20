@@ -21,7 +21,7 @@
  */
 package com.hitorro.util.typesystem.mappers;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.core.iterator.mappers.BaseMapper;
 import com.hitorro.util.json.keys.StaticVarProperty;
 import com.hitorro.util.typesystem.valuesource.ValueMapMapper;

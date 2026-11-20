@@ -21,7 +21,7 @@
  */
 package com.hitorro.network.debugcommand;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.network.rpc.FileHandleTopic;
 import com.hitorro.network.rpc.RPCHandler;
 import com.hitorro.network.rpc.RPCMessage;

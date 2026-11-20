@@ -22,7 +22,7 @@
 package com.hitorro.base.docprocessing;
 
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.basefile.tools.queue.writer.partitioners.DateBasedWriterPartitioner;
 import com.hitorro.util.json.keys.StringProperty;
 import com.hitorro.util.typesystem.ValueSourceBaseFields;

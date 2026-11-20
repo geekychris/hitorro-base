@@ -21,7 +21,8 @@
  */
 package com.hitorro.base.docprocessing;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.core.Log;
 import com.hitorro.util.core.iterator.sinks.Sink;
 
@@ -53,7 +54,7 @@ public abstract class ChannelLoader<E extends EnqueueHandler> {
 	public boolean start() {
 		try {
 			st.start();
-		} catch (IOException e) {
+		} catch (IOException | JacksonException e) {
 			Log.queue.error("Unable to start channel loader %s %e", e, e);
 			return false;
 		}

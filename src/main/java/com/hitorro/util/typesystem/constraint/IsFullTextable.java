@@ -21,7 +21,7 @@
  */
 package com.hitorro.util.typesystem.constraint;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.core.opers.HTPredicate;
 import com.hitorro.util.typesystem.TypeFieldIntf;
 import com.hitorro.util.typesystem.annotation.FullTextAttributeMetaInfo;

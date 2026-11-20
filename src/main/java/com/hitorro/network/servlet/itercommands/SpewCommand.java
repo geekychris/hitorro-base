@@ -21,9 +21,10 @@
  */
 package com.hitorro.network.servlet.itercommands;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.node.JsonNodeFactory;
+import tools.jackson.databind.node.ObjectNode;
 import com.hitorro.network.servlet.IterCommand;
 import com.hitorro.util.core.Console;
 import com.hitorro.util.core.Env;
@@ -61,7 +62,7 @@ public class SpewCommand implements IterCommand {
 			on.put("delay", delay);
 			try {
 				response.add(on);
-			} catch (IOException e) {
+			} catch (IOException | JacksonException e) {
 				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 			} catch (StoreException e) {
 				e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

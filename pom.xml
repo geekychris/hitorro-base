@@ -4,7 +4,7 @@
 
     <groupId>com.hitorro</groupId>
     <artifactId>hitorro-base</artifactId>
-    <version>3.0.2</version>
+    <version>4.0.0</version>
     <packaging>jar</packaging>
 
     <name>hitorro base component</name>
@@ -81,9 +81,9 @@
                 <version>3.30.17</version>
             </dependency>
             <dependency>
-                <groupId>com.fasterxml.jackson</groupId>
+                <groupId>tools.jackson</groupId>
                 <artifactId>jackson-bom</artifactId>
-                <version>2.18.12</version>
+                <version>3.1.8</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -423,24 +423,24 @@
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-streams</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-basefile</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.0</version>
         </dependency>
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-util</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.0</version>
         </dependency>
 
         <!-- JVS type system, projections, and NLP (provides OpenNLP, extJWNL, Lucene analysis transitively) -->
         <dependency>
             <groupId>com.hitorro</groupId>
             <artifactId>hitorro-jsontypesystem</artifactId>
-            <version>3.0.2</version>
+            <version>4.0.0</version>
         </dependency>
 
         <dependency>
@@ -467,6 +467,14 @@
         </dependency>
 
         <!-- Apache XML-RPC -->
+
+        <!-- commons-collections 3 used to arrive through hadoop-client (hitorro-core 3.0.x);
+             core 3.1.0 dropped Hadoop, so declare it (HTSerializableFileBucketWriter). -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
 
         <!-- Apache PDFBox -->
         <dependency>

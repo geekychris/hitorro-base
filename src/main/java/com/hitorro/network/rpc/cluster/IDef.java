@@ -21,9 +21,9 @@
  */
 package com.hitorro.network.rpc.cluster;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.node.JsonNodeFactory;
+import tools.jackson.databind.node.ObjectNode;
 import com.hitorro.jsontypesystem.JVS;
 import com.hitorro.jsontypesystem.JsonTypeSystem;
 import com.hitorro.jsontypesystem.predicates.ForEach;
