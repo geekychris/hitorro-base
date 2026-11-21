@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.docprocessing;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.blockqueue.QueueService;
 import com.hitorro.util.core.iterator.sinks.Sink;
 import com.hitorro.util.io.StoreException;

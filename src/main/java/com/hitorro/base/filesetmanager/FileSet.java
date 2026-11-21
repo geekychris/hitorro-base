@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.filesetmanager;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.basefile.filters.FileEndsWith;
 import com.hitorro.util.basefile.fs.BaseFile;
 import com.hitorro.util.core.iterator.AbstractIterator;
@@ -83,7 +83,7 @@ public class FileSet<T, MAPPED> {
 		if (JSONUtil.nullOrEmpty(maps)) {
 			return;
 		}
-		Iterator<Map.Entry<String, JsonNode>> iter = maps.fields();
+		Iterator<Map.Entry<String, JsonNode>> iter = maps.properties().iterator();
 		while (iter.hasNext()) {
 			Map.Entry<String, JsonNode> km = iter.next();
 			addMapTo(km.getKey(), km.getValue());

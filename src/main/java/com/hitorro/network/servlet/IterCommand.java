@@ -21,7 +21,7 @@
  */
 package com.hitorro.network.servlet;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.core.iterator.AbstractIterator;
 import com.hitorro.util.core.iterator.sinks.Sink;
 

@@ -21,7 +21,7 @@
  */
 package com.hitorro.network.rpc.cluster;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.jsontypesystem.JVS;
 import com.hitorro.util.core.Constants;
 import com.hitorro.util.core.collection.BaseCollection;

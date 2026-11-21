@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.filesetmanager;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.jsontypesystem.propreaders.JVSProperties;
 import com.hitorro.util.json.keys.propaccess.PropaccessError;
 import com.hitorro.util.startupframework.phases.ServiceDefinition;
@@ -74,7 +74,7 @@ public class FileSetManager {
 	}
 
 	private static void addSink(JsonNode list) {
-		Iterator<Map.Entry<String, JsonNode>> iter = list.fields();
+		Iterator<Map.Entry<String, JsonNode>> iter = list.properties().iterator();
 
 		while (iter.hasNext()) {
 			Map.Entry<String, JsonNode> km = iter.next();
@@ -87,7 +87,7 @@ public class FileSetManager {
 	}
 
 	private static boolean addFileSets(JsonNode list) {
-		Iterator<Map.Entry<String, JsonNode>> iter = list.fields();
+		Iterator<Map.Entry<String, JsonNode>> iter = list.properties().iterator();
 
 		while (iter.hasNext()) {
 			Map.Entry<String, JsonNode> km = iter.next();

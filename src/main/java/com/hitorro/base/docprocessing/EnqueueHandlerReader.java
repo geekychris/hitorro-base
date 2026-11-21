@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.docprocessing;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 
 import java.io.IOException;
 

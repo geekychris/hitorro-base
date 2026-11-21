@@ -21,7 +21,7 @@
  */
 package com.hitorro.util.typesystem.annotation;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.util.json.keys.BooleanProperty;
 import com.hitorro.util.json.keys.ClassProperty;
 import com.hitorro.util.json.keys.IntegerProperty;

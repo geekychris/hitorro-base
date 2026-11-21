@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.docprocessing.commands;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.QueueLoaderBaseFileCrawlerCallback;
 import com.hitorro.util.basefile.fs.BaseFile;
 import com.hitorro.util.basefile.fs.BaseFileSystem;

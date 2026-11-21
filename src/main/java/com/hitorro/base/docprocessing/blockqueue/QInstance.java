@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.docprocessing.blockqueue;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.EnqueueService;
 import com.hitorro.base.docprocessing.ValueSourceDatePartitioner;
 import com.hitorro.network.rpc.cluster.ClusterService;

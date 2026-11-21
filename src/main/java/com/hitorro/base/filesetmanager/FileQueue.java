@@ -21,7 +21,7 @@
  */
 package com.hitorro.base.filesetmanager;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import tools.jackson.databind.JsonNode;
 import com.hitorro.base.docprocessing.blockqueue.QInstance;
 import com.hitorro.util.basefile.filters.IsDir;
 import com.hitorro.util.basefile.fs.BaseFile;
